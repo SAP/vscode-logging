@@ -1,0 +1,13 @@
+{
+  "name": "@vscode-logging/library-example",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Example node library using @vscode-logging/logger via Dependency Injection",
+  "main": "index.js",
+  "repository": "https://github.com/sap/vscode-logging/",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@vscode-logging/types": "0.0.1"
+  }
+}

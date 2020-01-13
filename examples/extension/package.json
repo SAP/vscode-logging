@@ -1,0 +1,59 @@
+{
+  "name": "vscode-logging-extension-example",
+  "private": true,
+  "displayName": "logging-example",
+  "description": "Example using @vscode-logging/logger in a VSCode Extension",
+  "version": "0.0.1",
+  "publisher": "SAP",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.helloWorld"
+  ],
+  "main": "./lib/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Example_Logging",
+      "properties": {
+        "Example_Logging.loggingLevel": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fatal",
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "trace"
+          ],
+          "default": "info",
+          "description": "The verbosity of logging. The Order is None < fatal < error < warn < info < debug < trace.",
+          "scope": "resource"
+        },
+        "Example_Logging.sourceLocationTracking": {
+          "type": "boolean",
+          "default": false,
+          "description": "Should Source Code Location Info be added to log entries, DANGER - May be very slow, only use in debugging scenarios",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "scripts": {},
+  "dependencies": {
+    "@vscode-logging/logger": "0.0.1",
+    "@vscode-logging/library-example": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^8.10.25",
+    "@types/vscode": "^1.32.0"
+  }
+}
