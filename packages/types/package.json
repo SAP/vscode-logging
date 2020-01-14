@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/types",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Common Type Signatures for @vscode-logging/logger",
   "keywords": [
     "vscode",
@@ -9,7 +9,6 @@
   "repository": "https://github.com/sap/vscode-logging/",
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
-  "dependencies": {},
   "devDependencies": {
     "typescript": "3.7.4"
   },
