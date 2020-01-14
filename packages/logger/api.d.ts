@@ -16,16 +16,20 @@ export function getExtensionLogger(
 
 export type getExtensionLoggerOpts = {
   /**
-   * Root Label used when creating log entries.
-   * This will also be used as the prefix label for any childLogger e.g:
-   * - "Root.child"
-   * - "Root.child.grandChild"
+   * This parameter will be used for two things:
+   *
+   * - Name of the VSCode OutputChannel to log to.
+   *
+   * - Root Label used when creating log entries.
+   *   This will also be used as the prefix label for any childLogger e.g:
+   *   - "Root.child"
+   *   - "Root.child.grandChild"
    */
   extName: string;
   /**
    * The Initial Log Level to use.
    * This should normally provided by a configuration setting exposed to the Extension's end-users.
-   * - See: https://github.com/SAP/vscode-logging/tree/master/examples for a runnable example
+   * - See: https://github.com/SAP/vscode-logging/tree/master/examples/extension for a runnable example
    *        exposing logging configuration to the end user.
    */
   level: LogLevel;
