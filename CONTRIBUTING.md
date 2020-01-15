@@ -11,6 +11,29 @@ All contributors must sign the CLA
 
 This is managed automatically via https://cla-assistant.io/ pull request voter.
 
+## Pull Request Guidelines
+
+When **contributing a New Feature** make sure to:
+
+- use the `feat:` prefix in the [commit message header](#committing-changes).
+- Add relevant test cases to the PR.
+- Describe the reason for this new feature in the PR (The **Why**, not just **How**...)
+  - For significant changes it is recommended to first open an issue to discuss the proposed feature
+    and ensure it fits the project's goals.
+- Sign the [CLA](#legal)
+
+When **Fixing a Bug**:
+
+- use the `fix:` prefix in the [commit message header](#committing-changes).
+- Add a detailed description of the bug to the PR or open a new issue with the bug's description (if none exists).
+- Link the PR and Commit message to the bug using
+
+In general:
+
+- Keep your PRs focused on a single topic.
+- It is fine if there are multiple commits in a PR, but they must all be related to a single issue
+  and then be squashed into a single commit when merged to master.
+
 ## Development Environment
 
 ### pre-requisites
@@ -31,7 +54,10 @@ The initial setup is trivial:
 
 ### Committing Changes
 
-Use `git cz` to build conventional commit messages.
+This project enforces [Angular style](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit) commit message conventions
+using a pre-commit hook.
+
+It is recommended to use `git cz` command to construct the commit messages.
 
 - requires [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) to be installed.
 
