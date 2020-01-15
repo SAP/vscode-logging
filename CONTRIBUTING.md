@@ -20,7 +20,6 @@ When **contributing a New Feature** make sure to:
 - Describe the reason for this new feature in the PR (The **Why**, not just **How**...)
   - For significant changes it is recommended to first open an issue to discuss the proposed feature
     and ensure it fits the project's goals.
-- Sign the [CLA](#legal)
 
 When **Fixing a Bug**:
 
@@ -33,6 +32,8 @@ In general:
 - Keep your PRs focused on a single topic.
 - It is fine if there are multiple commits in a PR, but they must all be related to a single issue
   and then be squashed into a single commit when merged to master.
+- Remember to Sign the [CLA](#legal) in the PR
+  - You will be automatically asked this the first time you contribute to this project via a PR comment.
 
 ## Development Environment
 
