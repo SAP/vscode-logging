@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "devDependencies": {
-    "typescript": "3.7.4"
+    "typescript": "3.7.5"
   },
   "scripts": {
     "ci": "npm-run-all type-check",
