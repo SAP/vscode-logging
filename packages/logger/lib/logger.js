@@ -7,6 +7,8 @@ const { buildLoggerFormat } = require("./format");
 
 const ADD_SOURCE_LOCATION_INFO = Symbol("addSourceLocationInfo");
 const CHANGE_LEVEL = Symbol("changeLevel");
+const CHANGE_SOURCE_LOCATION_TRACKING = Symbol("changeSourceLocationTracking");
+
 const LABEL = Symbol("label");
 const LOGGER_IMPEL = Symbol("loggerImpel");
 const LEVEL_INT = Symbol("levelInt");
@@ -59,6 +61,7 @@ class BaseLogger {
 
       const newChildLoggerImpel = new BaseLogger({
         label: newLabel,
+        sourceLocationTracking: this[SOURCE_LOCATION_TRACKING],
         level: findKey(levelsConfig, val => val === this[LEVEL_INT]),
         loggerImpel: newWinstonLogger
       });
@@ -123,6 +126,18 @@ BaseLogger.prototype[CHANGE_LEVEL] = function(newLevel) {
   });
 };
 
+// private methods using Symbols to hide it, need to be added directly on the prototype
+BaseLogger.prototype[CHANGE_SOURCE_LOCATION_TRACKING] = function(
+  isSourceLocTrack
+) {
+  this[SOURCE_LOCATION_TRACKING] = isSourceLocTrack;
+  // @ts-ignore
+  forEach([...this[CHILD_LOGGERS].values()], childLogger => {
+    // Recursive Call
+    childLogger[CHANGE_SOURCE_LOCATION_TRACKING](isSourceLocTrack);
+  });
+};
+
 BaseLogger.prototype[ADD_SOURCE_LOCATION_INFO] = function(args) {
   if (this[SOURCE_LOCATION_TRACKING] === true) {
     const stack = stacktrace.getSync();
@@ -168,7 +183,7 @@ class VSCodeExtLogger extends BaseLogger {
   }
 
   changeSourceLocationTracking(newSourceLocation) {
-    this[SOURCE_LOCATION_TRACKING] = newSourceLocation;
+    this[CHANGE_SOURCE_LOCATION_TRACKING](newSourceLocation);
     this[WARN_IF_LOCATION_TRACKING_IS_ENABLED]();
   }
 }

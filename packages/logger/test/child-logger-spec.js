@@ -69,6 +69,34 @@ describe("VSCode Extension Logger", () => {
         ]);
     });
 
+    it("will handle sourceLocationTracking option at the root Logger of all childLoggers", () => {
+      const extLogger = getExtensionLogger({
+        extName: "MyExtName",
+        level: "info"
+      });
+
+      const childLogger = extLogger.getChildLogger({ label: "myLibName" });
+      const grandChildLogger = childLogger.getChildLogger({
+        label: "myClassName"
+      });
+
+      childLogger.warn("Oops I did it again!");
+      grandChildLogger.warn("Oops I did it again!");
+      const logEntriesBefore = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntriesBefore[0]).to.not.have.property("source");
+      expect(logEntriesBefore[1]).to.not.have.property("source");
+
+      // Change at the root Logger Source Location
+      extLogger.changeSourceLocationTracking(true);
+      vsCodeStub.lines = [];
+      childLogger.warn("Oops I did it again!");
+      grandChildLogger.warn("Oops I did it again!");
+
+      const logEntriesAfter = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntriesAfter[0]).to.have.property("source");
+      expect(logEntriesAfter[1]).to.have.property("source");
+    });
+
     it("will cache and re-use the same childLogger for the same label", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
