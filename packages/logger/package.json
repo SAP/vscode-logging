@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/logger",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Logger Library for VSCode Extensions",
   "keywords": [
     "vscode",
@@ -24,7 +24,7 @@
   "devDependencies": {
     "@types/fs-extra": "^8.0.1",
     "@types/vscode": "^1.41.0",
-    "@vscode-logging/types": "^0.1.0",
+    "@vscode-logging/types": "^0.1.1",
     "chai": "4.2.0",
     "chai-exclude": "2.0.2",
     "mocha": "7.0.0",
