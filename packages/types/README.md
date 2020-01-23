@@ -24,11 +24,11 @@ export function add(lhs: number, rhs: number, logger: IChildLogger): number {
 
 With npm:
 
-- `npm install @vscode-logging/api --save-dev`
+- `npm install @vscode-logging/types --save-dev`
 
 With Yarn:
 
-- `yarn add @vscode-logging/apiv --dev`
+- `yarn add @vscode-logging/types --dev`
 
 ## Usage
 
