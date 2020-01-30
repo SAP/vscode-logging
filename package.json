@@ -17,7 +17,7 @@
     "ci:subpackages": "lerna run ci"
   },
   "devDependencies": {
-    "@types/chai": "4.2.7",
+    "@types/chai": "4.2.8",
     "@types/mocha": "5.2.7",
     "chai": "4.2.0",
     "husky": "4.2.1",
