@@ -9,9 +9,7 @@
   "repository": "https://github.com/sap/vscode-logging/",
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
-  "devDependencies": {
-    "typescript": "3.7.5"
-  },
+  "devDependencies": {},
   "scripts": {
     "ci": "npm-run-all type-check",
     "type-check": "tsc"
