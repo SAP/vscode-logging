@@ -1,0 +1,16 @@
+# Mocha
+.mocharc.js
+
+# TypeScript
+tsconfig.json
+
+# NYC
+.nyc_output
+nyc.config.js
+coverage
+
+# tests
+test
+
+# Dev Docs
+CONTRIBUTING.md
