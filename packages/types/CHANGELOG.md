@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/sap/vscode-logging/compare/@vscode-logging/types@0.1.1...@vscode-logging/types@0.1.2) (2020-02-19)
+
+### Bug Fixes
+
+- add .npmignore files to remove unneeded contents in published pkgs ([998b1f8](https://github.com/sap/vscode-logging/commit/998b1f8341352af2bba9a640f425c66c2d3a8a74))
+
 ## [0.1.1](https://github.com/sap/vscode-logging/compare/@vscode-logging/types@0.1.0...@vscode-logging/types@0.1.1) (2020-01-20)
 
 **Note:** Version bump only for package @vscode-logging/types
