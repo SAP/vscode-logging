@@ -1177,9 +1177,9 @@
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
 "@types/vscode@^1.32.0", "@types/vscode@^1.41.0":
-  version "1.41.0"
-  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.41.0.tgz#b0d75920220f84e07093285e59180c0f11d336cd"
-  integrity sha512-7SfeY5u9jgiELwxyLB3z7l6l/GbN9CqpCQGkcRlB7tKRFBxzbz2PoBfGrLxI1vRfUCIq5+hg5vtDHExwq5j3+A==
+  version "1.43.0"
+  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.43.0.tgz#22276e60034c693b33117f1068ffaac0e89522db"
+  integrity sha512-kIaR9qzd80rJOxePKpCB/mdy00mz8Apt2QA5Y6rdrKFn13QNFNeP3Hzmsf37Bwh/3cS7QjtAeGSK7wSqAU0sYQ==
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
