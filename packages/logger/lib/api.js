@@ -10,7 +10,6 @@ const { createLogger } = require("winston");
  *
  *  Seem much worse.
  */
-const { window } = require("vscode");
 const { RollingFileStream } = require("streamroller");
 
 const { buildLoggerFormat } = require("./format");
@@ -34,17 +33,18 @@ function getExtensionLogger(opts) {
     throw Error("Should have at least one: logOutputChannel or logPath");
   }
 
-  // We are creating the output channel here because we also need a reference to it in the
-  // VSCodeExtLogger instance.
-  const outChannel = window.createOutputChannel(opts.extName);
   /**
    * @type {any[]}
    */
-  const transports = [
-    new VscodeOutChannelTransport({
-      outChannel: outChannel
-    })
-  ];
+  const transports = [];
+
+  if (opts.logOutputChannel) {
+    transports.push(
+      new VscodeOutChannelTransport({
+        outChannel: opts.logOutputChannel
+      })
+    );
+  }
 
   if (opts.logPath) {
     transports.push(
@@ -67,13 +67,23 @@ function getExtensionLogger(opts) {
     transports: transports
   });
 
-  const extLogger = new VSCodeExtLogger({
-    label: opts.extName,
-    level: opts.level,
-    sourceLocationTracking: opts.sourceLocationTracking,
-    outChannel: outChannel,
-    loggerImpel: rootWinstonLogger
-  });
+  let extLogger;
+  if (opts.logOutputChannel) {
+    extLogger = new VSCodeExtLogger({
+      label: opts.extName,
+      level: opts.level,
+      loggerImpel: rootWinstonLogger,
+      outChannel: opts.logOutputChannel,
+      sourceLocationTracking: opts.sourceLocationTracking
+    });
+  } else {
+    extLogger = new VSCodeExtLogger({
+      label: opts.extName,
+      level: opts.level,
+      loggerImpel: rootWinstonLogger,
+      sourceLocationTracking: opts.sourceLocationTracking
+    });
+  }
 
   return extLogger;
 }

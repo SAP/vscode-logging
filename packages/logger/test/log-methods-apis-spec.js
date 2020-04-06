@@ -7,7 +7,7 @@ const { VSCodeStub } = require("./stubs/vscode-stub");
 describe("VSCode Extension extLogger", () => {
   context("Log Methods APIs and Argument Types", () => {
     /**
-     * @type {typeof import("../api").getExtensionLogger}
+     * @type {typeof import("../api").getExtensionLogger}output
      */
     let getExtensionLogger;
     let vsCodeStub;
