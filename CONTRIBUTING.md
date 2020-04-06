@@ -7,7 +7,7 @@ A sub-package **may** have an additional CONTRIBUTING.md file if needed.
 
 All contributors must sign the CLA
 
-- https://cla-assistant.io/SAP/vscode-logger
+- https://cla-assistant.io/SAP/vscode-logging
 
 This is managed automatically via https://cla-assistant.io/ pull request voter.
 
