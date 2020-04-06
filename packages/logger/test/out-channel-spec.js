@@ -24,7 +24,8 @@ describe("VSCode Extension Logger", () => {
     it("will Log in JSON Format", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
       extLogger.fatal("Oy Vey!");
       extLogger.error("Oh Dear...");
@@ -50,7 +51,8 @@ describe("VSCode Extension Logger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         sourceLocationTracking: true,
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
       extLogger.fatal("Oh dear");
       const logEntries = map(vsCodeStub.lines, JSON.parse);
@@ -69,7 +71,8 @@ describe("VSCode Extension Logger", () => {
     it("will Create an outChannel named after the extension", () => {
       getExtensionLogger({
         extName: "MyExtName",
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
       expect(vsCodeStub.channelName).to.equal("MyExtName");
     });
@@ -81,7 +84,8 @@ describe("VSCode Extension Logger", () => {
           getExtensionLogger({
             extName: "MyExtName",
             sourceLocationTracking: true,
-            level: "warn"
+            level: "warn",
+            logPath: "logPath"
           });
           expect(vsCodeStub.shown).to.be.true;
         });
@@ -89,7 +93,8 @@ describe("VSCode Extension Logger", () => {
         it("on sourceLocationChange change", () => {
           const extLogger = getExtensionLogger({
             extName: "MyExtName",
-            level: "error"
+            level: "error",
+            logPath: "logPath"
           });
           expect(vsCodeStub.shown).to.be.false;
           extLogger.changeSourceLocationTracking(true);

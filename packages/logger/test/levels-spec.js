@@ -26,7 +26,8 @@ describe("VSCode Extension Logger", () => {
       expect(() => {
         getExtensionLogger({
           extName: "MyExtName",
-          level: "Emergency" // This is a sysLog severity
+          level: "Emergency", // This is a sysLog severity
+          logPath: "logPath"
         });
       }).to.throw("Attempt to use unknown logging level: <Emergency>!");
     });
@@ -34,7 +35,8 @@ describe("VSCode Extension Logger", () => {
     it(`will warn and ignore on subsequent invalid level`, () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "fatal"
+        level: "fatal",
+        logPath: "logPath"
       });
 
       extLogger.changeLevel("Emergency");
@@ -87,7 +89,8 @@ describe("VSCode Extension Logger", () => {
       it(`will only log correct levels in '${currLevel}'`, () => {
         const extLogger = getExtensionLogger({
           extName: "MyExtName",
-          level: currLevel
+          level: currLevel,
+          logPath: "logPath"
         });
 
         // try logging using all the possible levels

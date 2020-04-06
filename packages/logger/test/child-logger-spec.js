@@ -24,7 +24,8 @@ describe("VSCode Extension Logger", () => {
     it("will log to childLogger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
 
       const childLogger = extLogger.getChildLogger({ label: "myLibName" });
@@ -45,7 +46,8 @@ describe("VSCode Extension Logger", () => {
     it("will handle logging level at the root Logger of all childLoggers", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
 
       const childLogger = extLogger.getChildLogger({ label: "myLibName" });
@@ -72,7 +74,8 @@ describe("VSCode Extension Logger", () => {
     it("will handle sourceLocationTracking option at the root Logger of all childLoggers", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "info"
+        level: "info",
+        logPath: "logPath"
       });
 
       const childLogger = extLogger.getChildLogger({ label: "myLibName" });
@@ -100,7 +103,8 @@ describe("VSCode Extension Logger", () => {
     it("will cache and re-use the same childLogger for the same label", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error"
+        level: "error",
+        logPath: "logPath"
       });
 
       const childLogger = extLogger.getChildLogger({ label: "myLibName" });

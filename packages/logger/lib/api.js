@@ -30,6 +30,10 @@ function getExtensionLogger(opts) {
     throw Error(`Attempt to use unknown logging level: <${opts.level}>!`);
   }
 
+  if (!opts.logOutputChannel && !opts.logPath) {
+    throw Error("Should have at least one: logOutputChannel or logPath");
+  }
+
   // We are creating the output channel here because we also need a reference to it in the
   // VSCodeExtLogger instance.
   const outChannel = window.createOutputChannel(opts.extName);
