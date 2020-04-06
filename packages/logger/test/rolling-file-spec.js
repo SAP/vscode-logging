@@ -19,10 +19,11 @@ describe("VSCode Extension Logger", () => {
      */
     let getExtensionLogger;
     let streamRollerStub;
+    let vsCodeStub;
     beforeEach(() => {
       // VSCode outChannel is always enabled so we still need a stub for it
       // even if we are only interested in the rolling File Logger
-      const vsCodeStub = new VSCodeStub();
+      vsCodeStub = new VSCodeStub();
       streamRollerStub = new StreamRollerStub();
       const mainModuleStubbed = proxyquire("../lib/api.js", {
         vscode: vsCodeStub,
@@ -35,6 +36,7 @@ describe("VSCode Extension Logger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         logPath: TESTS_LOG_PATH,
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
       extLogger.fatal("Oy Vey!");
@@ -62,6 +64,7 @@ describe("VSCode Extension Logger", () => {
         extName: "MyExtName",
         sourceLocationTracking: true,
         logPath: TESTS_LOG_PATH,
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
       extLogger.fatal("Oy Vey!");

@@ -24,8 +24,8 @@ describe("VSCode Extension Logger", () => {
     it("will Log in JSON Format", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error",
-        logPath: "logPath"
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
       });
       extLogger.fatal("Oy Vey!");
       extLogger.error("Oh Dear...");
@@ -51,8 +51,8 @@ describe("VSCode Extension Logger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         sourceLocationTracking: true,
-        level: "error",
-        logPath: "logPath"
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
       });
       extLogger.fatal("Oh dear");
       const logEntries = map(vsCodeStub.lines, JSON.parse);
@@ -68,15 +68,6 @@ describe("VSCode Extension Logger", () => {
       expect(logJsonEntry.source.location).to.match(fileNameAndLocRegExp);
     });
 
-    it("will Create an outChannel named after the extension", () => {
-      getExtensionLogger({
-        extName: "MyExtName",
-        level: "error",
-        logPath: "logPath"
-      });
-      expect(vsCodeStub.channelName).to.equal("MyExtName");
-    });
-
     context(
       "will **show** on the outChannel and log a warning when the sourceLocationTracking is enabled",
       () => {
@@ -84,8 +75,8 @@ describe("VSCode Extension Logger", () => {
           getExtensionLogger({
             extName: "MyExtName",
             sourceLocationTracking: true,
-            level: "warn",
-            logPath: "logPath"
+            logOutputChannel: vsCodeStub.OutputChannel,
+            level: "warn"
           });
           expect(vsCodeStub.shown).to.be.true;
         });
@@ -93,8 +84,8 @@ describe("VSCode Extension Logger", () => {
         it("on sourceLocationChange change", () => {
           const extLogger = getExtensionLogger({
             extName: "MyExtName",
-            level: "error",
-            logPath: "logPath"
+            logOutputChannel: vsCodeStub.OutputChannel,
+            level: "error"
           });
           expect(vsCodeStub.shown).to.be.false;
           extLogger.changeSourceLocationTracking(true);

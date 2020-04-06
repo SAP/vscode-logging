@@ -24,8 +24,8 @@ describe("VSCode Extension extLogger", () => {
     it("supports splat arguments", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error",
-        logPath: "logPath"
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
       });
 
       extLogger.fatal("hello %s and 1 + %i equals 2", "world", 1);
@@ -36,8 +36,8 @@ describe("VSCode Extension extLogger", () => {
     it("supports metadata object arguments", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
-        level: "error",
-        logPath: "logPath"
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
       });
 
       extLogger.fatal("hello world", { a: 666, b: "oops" }, { c: 333 });
@@ -49,9 +49,8 @@ describe("VSCode Extension extLogger", () => {
 
     it("supports combining splat and object arguments", () => {
       const extLogger = getExtensionLogger({
-        extName: "MyExtName",
-        level: "error",
-        logPath: "logPath"
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
       });
 
       extLogger.fatal("hello %s", "world", { a: 666, b: "oops" }, { c: 333 });
