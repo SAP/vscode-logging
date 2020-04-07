@@ -39,12 +39,13 @@ function activate(context) {
     extName: "MyExtName",
     level: "info", // See LogLevel type in @vscode-logging/types for possible logLevels
     logPath: context.logPath, // The logPath is only available from the `vscode.ExtensionContext`
+    logOutputChannel: logOutputChannel, // OutputChannel for the logger
     sourceLocationTracking: false
   });
 
   extLogger.warn("Hello World");
   // Will Log The following entry to **both**
-  //   - VSCode outputChannel named "MyExtName"
+  //   - VSCode outputChannel `logOutputChannel`
   //   - To log files in `logPath`
   // {
   //   "label": "MyExtName",
