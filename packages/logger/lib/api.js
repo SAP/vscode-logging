@@ -67,23 +67,13 @@ function getExtensionLogger(opts) {
     transports: transports
   });
 
-  let extLogger;
-  if (opts.logOutputChannel) {
-    extLogger = new VSCodeExtLogger({
-      label: opts.extName,
-      level: opts.level,
-      loggerImpel: rootWinstonLogger,
-      outChannel: opts.logOutputChannel,
-      sourceLocationTracking: opts.sourceLocationTracking
-    });
-  } else {
-    extLogger = new VSCodeExtLogger({
-      label: opts.extName,
-      level: opts.level,
-      loggerImpel: rootWinstonLogger,
-      sourceLocationTracking: opts.sourceLocationTracking
-    });
-  }
+  const extLogger = new VSCodeExtLogger({
+    label: opts.extName,
+    level: opts.level,
+    loggerImpel: rootWinstonLogger,
+    outChannel: opts.logOutputChannel || undefined,
+    sourceLocationTracking: opts.sourceLocationTracking
+  });
 
   return extLogger;
 }
