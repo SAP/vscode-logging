@@ -1,3 +1,4 @@
+const { isEmpty } = require("lodash");
 const { createLogger } = require("winston");
 /**
  * Normally we would prefer to depend upon `vscode` and `streamroller` inside their respective transports.
@@ -29,8 +30,10 @@ function getExtensionLogger(opts) {
     throw Error(`Attempt to use unknown logging level: <${opts.level}>!`);
   }
 
-  if (!opts.logOutputChannel && !opts.logPath) {
-    throw Error("Should have at least one: logOutputChannel or logPath");
+  if (isEmpty(opts.logOutputChannel) && isEmpty(opts.logPath)) {
+    throw Error(
+      "Logger must have at least one logging target defined, either logOutputChannel or logPath."
+    );
   }
 
   /**

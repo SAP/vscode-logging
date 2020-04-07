@@ -13,7 +13,7 @@ describe("VSCode Extension Logger", () => {
           extName: "MyExtName",
           level: "error"
         });
-      }).to.throw("Should have at least one: logOutputChannel or logPath");
+      }).to.throw(" logOutputChannel or logPath");
     });
   });
 });
