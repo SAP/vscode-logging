@@ -3,7 +3,6 @@ const { expect } = require("chai");
 const proxyquire = require("proxyquire").noCallThru();
 const { basename, resolve } = require("path");
 
-const { VSCodeStub } = require("./stubs/vscode-stub");
 const { StreamRollerStub } = require("./stubs/stream-roller-stub");
 
 const TESTS_LOG_PATH = resolve(__dirname, ".log-out");
@@ -19,14 +18,9 @@ describe("VSCode Extension Logger", () => {
      */
     let getExtensionLogger;
     let streamRollerStub;
-    let vsCodeStub;
     beforeEach(() => {
-      // VSCode outChannel is optional but we still need a stub for it
-      // in order to test its functionality
-      vsCodeStub = new VSCodeStub();
       streamRollerStub = new StreamRollerStub();
       const mainModuleStubbed = proxyquire("../lib/api.js", {
-        vscode: vsCodeStub,
         streamroller: streamRollerStub
       });
       getExtensionLogger = mainModuleStubbed.getExtensionLogger;

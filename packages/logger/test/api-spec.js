@@ -1,24 +1,10 @@
 const { expect } = require("chai");
-const proxyquire = require("proxyquire").noCallThru();
-
-const { levels, levelsConfig } = require("../lib/levels");
-const { VSCodeStub } = require("./stubs/vscode-stub");
+const { getExtensionLogger } = require("../lib/api.js");
 
 describe("VSCode Extension Logger", () => {
   /**
    * @type {typeof import("../api").getExtensionLogger}
    */
-  let getExtensionLogger;
-  let vsCodeStub;
-  beforeEach(() => {
-    // VSCode outChannel is optional but we still need a stub for it
-    // in order to test its functionality
-    vsCodeStub = new VSCodeStub();
-    const mainModuleStubbed = proxyquire("../lib/api.js", {
-      vscode: vsCodeStub
-    });
-    getExtensionLogger = mainModuleStubbed.getExtensionLogger;
-  });
 
   context("when receiving no OutputChannel and no logPath", () => {
     it("will throw on invalid/missing parameters", () => {

@@ -71,7 +71,7 @@ function getExtensionLogger(opts) {
     label: opts.extName,
     level: opts.level,
     loggerImpel: rootWinstonLogger,
-    outChannel: opts.logOutputChannel || undefined,
+    outChannel: opts.logOutputChannel,
     sourceLocationTracking: opts.sourceLocationTracking
   });
 

@@ -45,7 +45,7 @@ function activate(context) {
 
   extLogger.warn("Hello World");
   // Will Log The following entry to **both**
-  //   - VSCode outputChannel `logOutputChannel`
+  //   - To outputChannel `logOutputChannel`
   //   - To log files in `logPath`
   // {
   //   "label": "MyExtName",
