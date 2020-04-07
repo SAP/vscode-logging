@@ -36,7 +36,6 @@ describe("VSCode Extension Logger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         logPath: TESTS_LOG_PATH,
-        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
       extLogger.fatal("Oy Vey!");
@@ -64,7 +63,6 @@ describe("VSCode Extension Logger", () => {
         extName: "MyExtName",
         sourceLocationTracking: true,
         logPath: TESTS_LOG_PATH,
-        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
       extLogger.fatal("Oy Vey!");
