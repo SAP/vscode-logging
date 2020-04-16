@@ -12,8 +12,8 @@ describe("VSCode Extension Logger", () => {
   let getExtensionLogger;
   let vsCodeStub;
   beforeEach(() => {
-    // VSCode outChannel is always enabled so we still need a stub for it
-    // even if we are only interested in the rolling File Logger
+    // VSCode outChannel is optional but we still need a stub for it
+    // in order to test its functionality
     vsCodeStub = new VSCodeStub();
     const mainModuleStubbed = proxyquire("../lib/api.js", {
       vscode: vsCodeStub
@@ -26,6 +26,7 @@ describe("VSCode Extension Logger", () => {
       expect(() => {
         getExtensionLogger({
           extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
           level: "Emergency" // This is a sysLog severity
         });
       }).to.throw("Attempt to use unknown logging level: <Emergency>!");
@@ -34,6 +35,7 @@ describe("VSCode Extension Logger", () => {
     it(`will warn and ignore on subsequent invalid level`, () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "fatal"
       });
 
@@ -87,6 +89,7 @@ describe("VSCode Extension Logger", () => {
       it(`will only log correct levels in '${currLevel}'`, () => {
         const extLogger = getExtensionLogger({
           extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
           level: currLevel
         });
 

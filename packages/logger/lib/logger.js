@@ -159,14 +159,14 @@ class VSCodeExtLogger extends BaseLogger {
    * @param {object} opts
    * @param {string} opts.label
    * @param {string} opts.level
-   * @param {import("vscode").OutputChannel} opts.outChannel
    * @param {import("winston").Logger} opts.loggerImpel
+   * @param {import("vscode").OutputChannel} [opts.outChannel]
    * @param {boolean} [opts.sourceLocationTracking]
    */
   constructor(opts) {
     super(opts);
 
-    this[OUT_CHANNEL] = opts.outChannel;
+    this[OUT_CHANNEL] = opts.outChannel || undefined;
     this.changeLevel(opts.level);
     this[WARN_IF_LOCATION_TRACKING_IS_ENABLED]();
   }
@@ -194,7 +194,10 @@ VSCodeExtLogger.prototype[WARN_IF_LOCATION_TRACKING_IS_ENABLED] = function() {
     this.fatal(
       "SourceLocationTracking is Enabled, This must only be used during debugging flows as it causes performance regressions"
     );
-    this[OUT_CHANNEL].show();
+
+    if (this[OUT_CHANNEL]) {
+      this[OUT_CHANNEL].show();
+    }
   }
 };
 

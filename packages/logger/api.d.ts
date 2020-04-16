@@ -4,6 +4,8 @@
  * - VSCode OutputChannel
  */
 import { IVSCodeExtLogger, LogLevel } from "@vscode-logging/types";
+import { OutputChannel } from "vscode";
+
 export {
   IVSCodeExtLogger,
   IChildLogger,
@@ -51,4 +53,9 @@ export type getExtensionLoggerOpts = {
    * Will likely cause significant performance regressions in productive flows.
    */
   sourceLocationTracking?: boolean;
+  /**
+   * Optional Output channel where the logs should be shown.
+   * If this is not passed no Output channel will be used.
+   */
+  logOutputChannel?: OutputChannel;
 };

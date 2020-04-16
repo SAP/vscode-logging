@@ -7,13 +7,13 @@ const { VSCodeStub } = require("./stubs/vscode-stub");
 describe("VSCode Extension extLogger", () => {
   context("Log Methods APIs and Argument Types", () => {
     /**
-     * @type {typeof import("../api").getExtensionLogger}
+     * @type {typeof import("../api").getExtensionLogger}output
      */
     let getExtensionLogger;
     let vsCodeStub;
     beforeEach(() => {
-      // VSCode outChannel is always enabled so we still need a stub for it
-      // even if we are only interested in the rolling File extLogger
+      // VSCode outChannel is optional but we still need a stub for it
+      // in order to test its functionality
       vsCodeStub = new VSCodeStub();
       const mainModuleStubbed = proxyquire("../lib/api.js", {
         vscode: vsCodeStub
@@ -24,6 +24,7 @@ describe("VSCode Extension extLogger", () => {
     it("supports splat arguments", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
 
@@ -35,6 +36,7 @@ describe("VSCode Extension extLogger", () => {
     it("supports metadata object arguments", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
 
@@ -47,7 +49,7 @@ describe("VSCode Extension extLogger", () => {
 
     it("supports combining splat and object arguments", () => {
       const extLogger = getExtensionLogger({
-        extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
 
