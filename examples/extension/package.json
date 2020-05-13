@@ -53,7 +53,7 @@
     "@vscode-logging/logger": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "10.x",
+    "@types/node": "14.x",
     "@types/vscode": "^1.32.0"
   }
 }
