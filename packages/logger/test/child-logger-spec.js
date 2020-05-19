@@ -224,6 +224,7 @@ describe("VSCode Extension Logger", () => {
 
         const libLogger = extLogger.getChildLogger({ label: "myLibName" });
         const classLogger = libLogger.getChildLogger({ label: "myClassName" });
+
         classLogger.error("Oops I did it again!");
 
         const logEntries = map(vsCodeStub.lines, JSON.parse);
