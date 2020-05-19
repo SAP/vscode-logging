@@ -38,9 +38,10 @@ describe("VSCode Extension Logger", () => {
         .excluding("time")
         .to.deep.eql([
           {
-            label: "MyExtName.myLibName",
+            label: "MyExtName",
             level: "fatal",
-            message: "Oops I did it again!"
+            message: "Oops I did it again!",
+            namespace: "MyExtName.myLibName"
           }
         ]);
     });
@@ -66,9 +67,10 @@ describe("VSCode Extension Logger", () => {
         .excluding("time")
         .to.deep.eql([
           {
-            label: "MyExtName.myLibName",
+            label: "MyExtName",
             level: "warn",
-            message: "Oops I did it again!"
+            message: "Oops I did it again!",
+            namespace: "MyExtName.myLibName"
           }
         ]);
     });

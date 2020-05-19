@@ -42,12 +42,14 @@ describe("VSCode Extension Logger", () => {
           {
             label: "MyExtName",
             level: "fatal",
-            message: "Oy Vey!"
+            message: "Oy Vey!",
+            namespace: "MyExtName"
           },
           {
             label: "MyExtName",
             level: "error",
-            message: "Oh Dear..."
+            message: "Oh Dear...",
+            namespace: "MyExtName"
           }
         ]);
     });
