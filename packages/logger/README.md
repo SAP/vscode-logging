@@ -51,6 +51,7 @@ function activate(context) {
   //   "label": "MyExtName",
   //   "level": "warn",
   //   "message": "Hello World",
+  //   "namespace": "MyExtName",
   //   "time": "2020-01-10 15:29:52.038Z"
   // }
 }
@@ -60,7 +61,7 @@ function activate(context) {
 
 The `getChildLogger` API is available on the interface returned by `getExtensionLogger`.
 This can be used to obtain sub logger which log to the same targets (outChannel/files) as
-the root logger, but with a more specific label.
+the root logger, but with a more specific namespace.
 
 ```javascript
 const { getExtensionLogger } = require("@vscode-logging/logger");
@@ -69,20 +70,22 @@ const extLogger = getExtensionLogger({ extName: "MyExtName" /* ... */ });
 
 const childLogger = extLogger.getChildLogger({ label: "MyClass" });
 childLogger.warn("Hello World");
-// Will Log to the same targets as extLogger but with a suffix added to the `label`
+// Will Log to the same targets as extLogger but with a suffix added to the `namespace`
 // {
-//   "label": "MyExtName.MyClass", // Note the `.MyClass` suffix in the label
+//   "label": "MyExtName",
 //   "level": "warn",
 //   "message": "Hello World",
+//   "namespace": "MyExtName.MyClass", // Note the `.MyClass` suffix in the namespace
 //   "time": "2020-01-10 15:29:52.038Z"
 // }
 
 const grandChildLogger = childLogger.getChildLogger({ label: "MyMethod" });
 grandChildLogger.warn("Hip Hip Hurray");
 // {
-//   "label": "MyExtName.MyClass.MyMethod", // Note the `.MyMethod` suffix in the label
+//   "label": "MyExtName",
 //   "level": "warn",
 //   "message": "Hello World",
+//   "namespace": "MyExtName.MyClass.MyMethod", // Note the `.MyMethod` suffix in the namespace
 //   "time": "2020-01-10 15:30:52.038Z"
 // }
 ```
@@ -107,6 +110,7 @@ name and location (file/line/column) where the log method was invoked, e.g:
   "label": "osem",
   "level": "error",
   "message": "Hip Hip Hurray, the <Hello World> Command was executed! counter: <1>",
+  "namespace": "osem",
   "source": {
     "function": "registerCalback",
     "location": "c:\\workspace\\vscode-logging\\examples\\extension\\lib\\commands.js:21:19"
