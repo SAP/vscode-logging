@@ -38,10 +38,9 @@ describe("VSCode Extension Logger", () => {
         .excluding("time")
         .to.deep.eql([
           {
-            label: "MyExtName",
+            label: "MyExtName.myLibName",
             level: "fatal",
-            message: "Oops I did it again!",
-            namespace: "MyExtName.myLibName"
+            message: "Oops I did it again!"
           }
         ]);
     });
@@ -67,10 +66,9 @@ describe("VSCode Extension Logger", () => {
         .excluding("time")
         .to.deep.eql([
           {
-            label: "MyExtName",
+            label: "MyExtName.myLibName",
             level: "warn",
-            message: "Oops I did it again!",
-            namespace: "MyExtName.myLibName"
+            message: "Oops I did it again!"
           }
         ]);
     });
@@ -178,7 +176,7 @@ describe("VSCode Extension Logger", () => {
     });
   });
   context(
-    "childLogger will log to childLogger log entry with correct namespace",
+    "childLogger will log to childLogger log entry with correct label",
     () => {
       /**
        * @type {typeof import("../api").getExtensionLogger}
@@ -210,10 +208,9 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label: "MyExtName.myClassName",
               level: "fatal",
-              message: "Oops I did it again!",
-              namespace: "MyExtName.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });
@@ -234,10 +231,9 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label: "MyExtName.myLibName.myClassName",
               level: "error",
-              message: "Oops I did it again!",
-              namespace: "MyExtName.myLibName.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });
@@ -259,10 +255,9 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label: "MyExtName.myLib1Name.myLib2Name.myClassName",
               level: "warn",
-              message: "Oops I did it again!",
-              namespace: "MyExtName.myLib1Name.myLib2Name.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });
@@ -285,11 +280,9 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label: "MyExtName.myLib1Name.myLib2Name.myLib3Name.myClassName",
               level: "info",
-              message: "Oops I did it again!",
-              namespace:
-                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });
@@ -312,11 +305,10 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label:
+                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myClassName",
               level: "debug",
-              message: "Oops I did it again!",
-              namespace:
-                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });
@@ -340,11 +332,10 @@ describe("VSCode Extension Logger", () => {
           .excluding("time")
           .to.deep.eql([
             {
-              label: "MyExtName",
+              label:
+                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myLib5Name.myClassName",
               level: "trace",
-              message: "Oops I did it again!",
-              namespace:
-                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myLib5Name.myClassName"
+              message: "Oops I did it again!"
             }
           ]);
       });

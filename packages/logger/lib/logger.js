@@ -63,7 +63,7 @@ class BaseLogger {
   fatal(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.fatal) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       // @ts-ignore
       this[LOGGER_IMPEL].fatal(msg, ...args);
     }
@@ -72,7 +72,7 @@ class BaseLogger {
   error(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.error) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].error(msg, ...args);
     }
   }
@@ -80,7 +80,7 @@ class BaseLogger {
   warn(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.warn) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].warn(msg, ...args);
     }
   }
@@ -88,7 +88,7 @@ class BaseLogger {
   info(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.info) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].info(msg, ...args);
     }
   }
@@ -96,7 +96,7 @@ class BaseLogger {
   debug(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.debug) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].debug(msg, ...args);
     }
   }
@@ -104,7 +104,7 @@ class BaseLogger {
   trace(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.trace) {
       this[ADD_SOURCE_LOCATION_INFO](args);
-      args.push({ namespace: this[LABEL] });
+      args.push({ label: this[LABEL] });
       // @ts-ignore
       this[LOGGER_IMPEL].trace(msg, ...args);
     }

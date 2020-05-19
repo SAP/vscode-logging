@@ -108,7 +108,7 @@ describe("VSCode Extension Logger", () => {
         );
 
         expect(logEntries)
-          .excluding(["time", "label", "namespace"])
+          .excluding(["time", "label"])
           .to.deep.eql(expectedLogEntries);
       });
     });

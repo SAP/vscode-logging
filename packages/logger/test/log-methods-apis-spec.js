@@ -61,19 +61,19 @@ describe("VSCode Extension extLogger", () => {
       expect(logEntries[0].c).to.equal(333);
     });
 
-    it("overwrites namespace field", () => {
+    it("overwrites label field", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         logOutputChannel: vsCodeStub.OutputChannel,
         level: "error"
       });
 
-      extLogger.fatal("hello world", { namespace: "kuku" });
+      extLogger.fatal("hello world", { label: "kuku" });
       const logEntries = map(vsCodeStub.lines, JSON.parse);
-      expect(logEntries[0].namespace).to.equal("MyExtName");
+      expect(logEntries[0].label).to.equal("MyExtName");
     });
 
-    it("overwrites namespace field for ChildLogger", () => {
+    it("overwrites label field for ChildLogger", () => {
       const extLogger = getExtensionLogger({
         extName: "MyExtName",
         logOutputChannel: vsCodeStub.OutputChannel,
@@ -82,11 +82,9 @@ describe("VSCode Extension extLogger", () => {
       const libLogger = extLogger.getChildLogger({ label: "MyLibName" });
       const classLogger = libLogger.getChildLogger({ label: "MyClassName" });
 
-      classLogger.fatal("hello world", { namespace: "kuku" });
+      classLogger.fatal("hello world", { label: "kuku" });
       const logEntries = map(vsCodeStub.lines, JSON.parse);
-      expect(logEntries[0].namespace).to.equal(
-        "MyExtName.MyLibName.MyClassName"
-      );
+      expect(logEntries[0].label).to.equal("MyExtName.MyLibName.MyClassName");
     });
   });
 });

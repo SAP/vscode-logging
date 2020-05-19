@@ -26,7 +26,6 @@ const JSONStable = format(info => {
 function buildLoggerFormat(label) {
   const resultFormat = format.combine(
     format.splat(),
-    format.label({ label: label }),
     utcTimestampProp(),
     JSONStable()
   );

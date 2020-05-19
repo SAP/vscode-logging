@@ -23,8 +23,7 @@ export type getExtensionLoggerOpts = {
    * - Name of the VSCode OutputChannel to log to.
    *
    * - Root Label used when creating log entries.
-   *   This will be used as a label field for any childLogger and
-   *   also be used as a prefix for namespace field for any childLogger e.g:
+   *   This will also be used as the prefix label for any childLogger e.g:
    *   - "Root.child"
    *   - "Root.child.grandChild"
    */

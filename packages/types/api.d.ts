@@ -51,7 +51,7 @@ export interface IChildLogger {
 
   /**
    * Will create an logger which uses the **same** log Targets (VSCode outputChannel / Rolling File(?)).
-   * With one difference: This "child-logger" will prefix its name to the log entries namesapce property.
+   * With one difference: This "child-logger" will prefix its name to the log entries label property.
    * This enables distinguishing between logging messages arriving from different sources, e.g:
    *
    * - Per Class Logger

@@ -4,7 +4,7 @@ const { Calculator } = require("@vscode-logging/library-example");
 const { getLogger } = require("./logger-wrapper");
 
 function callLibraryAndPassLogger() {
-  // Using a childLogger will add a suffix to the `namespace` information in each logEntry.
+  // Using a childLogger will add a suffix to the `label` information in each logEntry.
   const calculatorChildLogger = getLogger().getChildLogger({
     label: "Calculator"
   });
