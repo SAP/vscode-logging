@@ -156,13 +156,13 @@ describe("VSCode Extension Logger", () => {
      * with only on this it, context or describe;
      * or when running "yarn test" in vscode-logging/packages/logger folder.
      *
-     * The following errors appear after the successful test result:
+     * The following errors appeared before fixing Issue #76 after the successful test result:
      childLogger load
      √ will create 9 childLoggers and write error message to stderr
      (node:2280) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unpipe listeners added to [RollingFileTransport]. Use emitter.setMaxListeners() to increase limit
      (node:2280) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [RollingFileTransport]. Use emitter.setMaxListeners() to increase limit
      */
-    it("will create 9 childLoggers and write error message to stderr", () => {
+    it("will create 9 childLoggers and write error message to stderr (before fixing Issue #76)", () => {
       return createExtLoggerWithNumberOfChildLoggers(9);
     });
 
@@ -173,7 +173,7 @@ describe("VSCode Extension Logger", () => {
      childLogger load
      √ will create 8 childLoggers and no error message to stderr
      */
-    it("will create 8 childLoggers and no error message to stderr", () => {
+    it("will create 8 childLoggers and no error message to stderr (before fixing Issue #76)", () => {
       return createExtLoggerWithNumberOfChildLoggers(8);
     });
   });

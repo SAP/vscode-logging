@@ -60,5 +60,33 @@ describe("VSCode Extension extLogger", () => {
       expect(logEntries[0].b).to.equal("oops");
       expect(logEntries[0].c).to.equal(333);
     });
+
+    it("overwrites namespace field", () => {
+      const extLogger = getExtensionLogger({
+        extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
+      });
+
+      extLogger.fatal("hello world", { namespace: "kuku" });
+      const logEntries = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntries[0].namespace).to.equal("MyExtName");
+    });
+
+    it("overwrites namespace field for ChildLogger", () => {
+      const extLogger = getExtensionLogger({
+        extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
+      });
+      const libLogger = extLogger.getChildLogger({ label: "MyLibName" });
+      const classLogger = libLogger.getChildLogger({ label: "MyClassName" });
+
+      classLogger.fatal("hello world", { namespace: "kuku" });
+      const logEntries = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntries[0].namespace).to.equal(
+        "MyExtName.MyLibName.MyClassName"
+      );
+    });
   });
 });
