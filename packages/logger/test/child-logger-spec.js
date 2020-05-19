@@ -177,4 +177,177 @@ describe("VSCode Extension Logger", () => {
       return createExtLoggerWithNumberOfChildLoggers(8);
     });
   });
+  context(
+    "childLogger will log to childLogger log entry with correct namespace",
+    () => {
+      /**
+       * @type {typeof import("../api").getExtensionLogger}
+       */
+      let getExtensionLogger;
+      let vsCodeStub;
+      beforeEach(() => {
+        // VSCode outChannel is optional but we still need a stub for it
+        // in order to test its functionality
+        vsCodeStub = new VSCodeStub();
+        const mainModuleStubbed = proxyquire("../lib/api.js", {
+          vscode: vsCodeStub
+        });
+        getExtensionLogger = mainModuleStubbed.getExtensionLogger;
+      });
+
+      it("in fatal log message for extension class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const classLogger = extLogger.getChildLogger({ label: "myClassName" });
+        classLogger.fatal("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "fatal",
+              message: "Oops I did it again!",
+              namespace: "MyExtName.myClassName"
+            }
+          ]);
+      });
+
+      it("in error log message for extension library class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const libLogger = extLogger.getChildLogger({ label: "myLibName" });
+        const classLogger = libLogger.getChildLogger({ label: "myClassName" });
+        classLogger.error("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "error",
+              message: "Oops I did it again!",
+              namespace: "MyExtName.myLibName.myClassName"
+            }
+          ]);
+      });
+
+      it("in warn log message for extension internal library class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const lib1Logger = extLogger.getChildLogger({ label: "myLib1Name" });
+        const lib2Logger = lib1Logger.getChildLogger({ label: "myLib2Name" });
+        const classLogger = lib2Logger.getChildLogger({ label: "myClassName" });
+        classLogger.warn("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "warn",
+              message: "Oops I did it again!",
+              namespace: "MyExtName.myLib1Name.myLib2Name.myClassName"
+            }
+          ]);
+      });
+
+      it("in info log message for extension internal library class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const lib1Logger = extLogger.getChildLogger({ label: "myLib1Name" });
+        const lib2Logger = lib1Logger.getChildLogger({ label: "myLib2Name" });
+        const lib3Logger = lib2Logger.getChildLogger({ label: "myLib3Name" });
+        const classLogger = lib3Logger.getChildLogger({ label: "myClassName" });
+        classLogger.info("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "info",
+              message: "Oops I did it again!",
+              namespace:
+                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myClassName"
+            }
+          ]);
+      });
+      it("in debug log message for extension internal library class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const lib1Logger = extLogger.getChildLogger({ label: "myLib1Name" });
+        const lib2Logger = lib1Logger.getChildLogger({ label: "myLib2Name" });
+        const lib3Logger = lib2Logger.getChildLogger({ label: "myLib3Name" });
+        const lib4Logger = lib3Logger.getChildLogger({ label: "myLib4Name" });
+        const classLogger = lib4Logger.getChildLogger({ label: "myClassName" });
+        classLogger.debug("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "debug",
+              message: "Oops I did it again!",
+              namespace:
+                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myClassName"
+            }
+          ]);
+      });
+      it("in trace log message for extension internal library class", () => {
+        const extLogger = getExtensionLogger({
+          extName: "MyExtName",
+          logOutputChannel: vsCodeStub.OutputChannel,
+          level: "trace"
+        });
+
+        const lib1Logger = extLogger.getChildLogger({ label: "myLib1Name" });
+        const lib2Logger = lib1Logger.getChildLogger({ label: "myLib2Name" });
+        const lib3Logger = lib2Logger.getChildLogger({ label: "myLib3Name" });
+        const lib4Logger = lib3Logger.getChildLogger({ label: "myLib4Name" });
+        const lib5Logger = lib4Logger.getChildLogger({ label: "myLib5Name" });
+        const classLogger = lib5Logger.getChildLogger({ label: "myClassName" });
+        classLogger.trace("Oops I did it again!");
+
+        const logEntries = map(vsCodeStub.lines, JSON.parse);
+        expect(logEntries)
+          .excluding("time")
+          .to.deep.eql([
+            {
+              label: "MyExtName",
+              level: "trace",
+              message: "Oops I did it again!",
+              namespace:
+                "MyExtName.myLib1Name.myLib2Name.myLib3Name.myLib4Name.myLib5Name.myClassName"
+            }
+          ]);
+      });
+    }
+  );
 });
