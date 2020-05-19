@@ -124,14 +124,27 @@ describe("VSCode Extension Logger", () => {
     let getExtensionLogger;
     let vsCodeStub;
     beforeEach(() => {
-      // VSCode outChannel is optional but we still need a stub for it
-      // in order to test its functionality
-      vsCodeStub = new VSCodeStub();
-      const mainModuleStubbed = proxyquire("../lib/api.js", {
-        vscode: vsCodeStub
-      });
+      const mainModuleStubbed = proxyquire("../lib/api.js", {});
       getExtensionLogger = mainModuleStubbed.getExtensionLogger;
     });
+
+    function createExtLoggerWithNumberOfChildLoggers(childLoggersNumbers) {
+      const extLogger = getExtensionLogger({
+        extName: "MainLoggerExtension",
+        logPath: TESTS_LOG_PATH,
+        level: "error"
+      });
+
+      for (
+        let childLoggerNumber = 1;
+        childLoggerNumber <= childLoggersNumbers;
+        childLoggerNumber++
+      ) {
+        extLogger.getChildLogger({
+          label: "ChildLoggerClass" + childLoggerNumber
+        });
+      }
+    }
 
     /**
      * Issue #76 reproduction.
@@ -143,28 +156,23 @@ describe("VSCode Extension Logger", () => {
      *
      * The following errors appear after the successful test result:
      childLogger load
-     √ will create 9 childLoggers
+     √ will create 9 childLoggers and write error message to stderr
      (node:2280) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unpipe listeners added to [RollingFileTransport]. Use emitter.setMaxListeners() to increase limit
      (node:2280) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 error listeners added to [RollingFileTransport]. Use emitter.setMaxListeners() to increase limit
      */
     it("will create 9 childLoggers and write error message to stderr", () => {
-      const extLogger = getExtensionLogger({
-        extName: "MainLoggerExtension",
-        logPath: TESTS_LOG_PATH,
-        level: "error"
-      });
+      return createExtLoggerWithNumberOfChildLoggers(9);
+    });
 
-      const childLogger = extLogger.getChildLogger({
-        label: "ChildLoggerClass1"
-      });
-      extLogger.getChildLogger({ label: "ChildLoggerClass2" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass3" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass4" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass5" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass6" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass7" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass8" });
-      extLogger.getChildLogger({ label: "ChildLoggerClass9" });
+    /**
+     * Issue #76 doesn't happen when the number of ChildLogger's is less than 9.
+     *
+     * No errors appear after the successful test result:
+     childLogger load
+     √ will create 8 childLoggers and no error message to stderr
+     */
+    it("will create 8 childLoggers and no error message to stderr", () => {
+      return createExtLoggerWithNumberOfChildLoggers(8);
     });
   });
 });
