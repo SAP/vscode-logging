@@ -42,38 +42,28 @@ class BaseLogger {
   }
 
   getChildLogger(opts) {
-    const transports = this[LOGGER_IMPEL].transports;
     const newLabel = this[LABEL] + "." + opts.label;
-    const format = buildLoggerFormat(newLabel);
 
     if (this[CHILD_LOGGERS].has(newLabel)) {
       return this[CHILD_LOGGERS].get(newLabel);
-    } else {
-      const newWinstonLogger = createLogger({
-        levels: levelsConfig,
-        // We are handling the log levels ourselves, to avoid calling winston's re-configure method
-        // as it would require us to re-create the winston transports and may create race conditions
-        // - Winston does not have a minimal API to change **only** the level...
-        level: levels.trace,
-        format: format,
-        transports: transports
-      });
-
-      const newChildLoggerImpel = new BaseLogger({
-        label: newLabel,
-        sourceLocationTracking: this[SOURCE_LOCATION_TRACKING],
-        level: findKey(levelsConfig, val => val === this[LEVEL_INT]),
-        loggerImpel: newWinstonLogger
-      });
-      this[CHILD_LOGGERS].set(newLabel, newChildLoggerImpel);
-
-      return newChildLoggerImpel;
     }
+
+    const newChildLoggerImpel = new BaseLogger({
+      label: newLabel,
+      sourceLocationTracking: this[SOURCE_LOCATION_TRACKING],
+      level: findKey(levelsConfig, val => val === this[LEVEL_INT]),
+      loggerImpel: this[LOGGER_IMPEL]
+    });
+
+    this[CHILD_LOGGERS].set(newLabel, newChildLoggerImpel);
+
+    return newChildLoggerImpel;
   }
 
   fatal(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.fatal) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       // @ts-ignore
       this[LOGGER_IMPEL].fatal(msg, ...args);
     }
@@ -82,6 +72,7 @@ class BaseLogger {
   error(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.error) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].error(msg, ...args);
     }
   }
@@ -89,6 +80,7 @@ class BaseLogger {
   warn(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.warn) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].warn(msg, ...args);
     }
   }
@@ -96,6 +88,7 @@ class BaseLogger {
   info(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.info) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].info(msg, ...args);
     }
   }
@@ -103,6 +96,7 @@ class BaseLogger {
   debug(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.debug) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       this[LOGGER_IMPEL].debug(msg, ...args);
     }
   }
@@ -110,6 +104,7 @@ class BaseLogger {
   trace(msg, ...args) {
     if (this[LEVEL_INT] >= levelsConfig.trace) {
       this[ADD_SOURCE_LOCATION_INFO](args);
+      args.push({ label: this[LABEL] });
       // @ts-ignore
       this[LOGGER_IMPEL].trace(msg, ...args);
     }

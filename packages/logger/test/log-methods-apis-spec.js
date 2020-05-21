@@ -60,5 +60,31 @@ describe("VSCode Extension extLogger", () => {
       expect(logEntries[0].b).to.equal("oops");
       expect(logEntries[0].c).to.equal(333);
     });
+
+    it("overwrites label field", () => {
+      const extLogger = getExtensionLogger({
+        extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
+      });
+
+      extLogger.fatal("hello world", { label: "kuku" });
+      const logEntries = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntries[0].label).to.equal("MyExtName");
+    });
+
+    it("overwrites label field for ChildLogger", () => {
+      const extLogger = getExtensionLogger({
+        extName: "MyExtName",
+        logOutputChannel: vsCodeStub.OutputChannel,
+        level: "error"
+      });
+      const libLogger = extLogger.getChildLogger({ label: "MyLibName" });
+      const classLogger = libLogger.getChildLogger({ label: "MyClassName" });
+
+      classLogger.fatal("hello world", { label: "kuku" });
+      const logEntries = map(vsCodeStub.lines, JSON.parse);
+      expect(logEntries[0].label).to.equal("MyExtName.MyLibName.MyClassName");
+    });
   });
 });
