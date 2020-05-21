@@ -112,7 +112,7 @@ Performing a release requires push permissions to this repository.
 - `yarn run lerna:version`
 - Follow the lerna CLI instructions.
 - Track the `RELEASE` tag build on circle-ci.
-  - https://circleci.com/gh/SAP/vscode.
+  - https://circleci.com/gh/SAP/vscode-logging.
 - Once the tag build has finished successfully inspect the npm registry to see the new versions
   for all the changed packages of this mono-repo.
   - `npm view [package-name] version`
