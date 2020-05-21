@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/sap/vscode-logging/compare/@vscode-logging/logger@1.0.0...@vscode-logging/logger@1.1.0) (2020-05-21)
+
+### Features
+
+- **logger:** a memory leak when creating 9 or more ChildLogger's ([#76](https://github.com/sap/vscode-logging/issues/76)) ([482c708](https://github.com/sap/vscode-logging/commit/482c708e9b8643849f6a14253c51650ffac70416))
+
 # [1.0.0](https://github.com/sap/vscode-logging/compare/@vscode-logging/logger@0.1.2...@vscode-logging/logger@1.0.0) (2020-04-16)
 
 - Make OutputChannel optional. (#55) ([b7fa564](https://github.com/sap/vscode-logging/commit/b7fa56436693df9787f8ea720559beb3b0566612)), closes [#55](https://github.com/sap/vscode-logging/issues/55) [#55](https://github.com/sap/vscode-logging/issues/55)

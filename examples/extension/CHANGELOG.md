@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-example@1.0.0...vscode-logging-extension-example@1.0.1) (2020-05-21)
+
+**Note:** Version bump only for package vscode-logging-extension-example
+
 # [1.0.0](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-example@0.1.2...vscode-logging-extension-example@1.0.0) (2020-04-16)
 
 - Make OutputChannel optional. (#55) ([b7fa564](https://github.com/SAP/vscode-logging/commit/b7fa56436693df9787f8ea720559beb3b0566612)), closes [#55](https://github.com/SAP/vscode-logging/issues/55) [#55](https://github.com/SAP/vscode-logging/issues/55)
