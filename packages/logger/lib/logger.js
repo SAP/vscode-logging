@@ -1,10 +1,6 @@
-const { createLogger } = require("winston");
 const { forEach, findKey } = require("lodash");
 const stacktrace = require("stacktrace-js");
-
-const { levelsConfig, isValidLogLevel, levels } = require("./levels");
-const { buildLoggerFormat } = require("./format");
-
+const { levelsConfig, isValidLogLevel } = require("./levels");
 const ADD_SOURCE_LOCATION_INFO = Symbol("addSourceLocationInfo");
 const CHANGE_LEVEL = Symbol("changeLevel");
 const CHANGE_SOURCE_LOCATION_TRACKING = Symbol("changeSourceLocationTracking");
