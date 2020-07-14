@@ -18,10 +18,10 @@ const { getLogger, initLogger } = require("./logger-wrapper");
 function activate(context) {
   // The `logPath` is only available from the `ExtensionContext`
   const logPath = context.logPath;
-  const logOutputChannel = window.createOutputChannel(meta.name);
   const logLevelSetting = getLoggingLevelSetting();
   const sourceLocationTrackingSettings = getSourceLocationTrackingSetting();
   const meta = require(resolve(__dirname, "..", "package.json"));
+  const logOutputChannel = vscode.window.createOutputChannel(meta.name);
 
   // The Logger must first be initialized before any logging commands may be invoked.
   const extLogger = getExtensionLogger({
