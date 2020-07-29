@@ -3,7 +3,7 @@
   "private": true,
   "displayName": "logging-example",
   "description": "Example using @vscode-logging/logger in a VSCode Extension",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "publisher": "SAP",
   "engines": {
     "vscode": "^1.32.0"
@@ -50,7 +50,7 @@
   "scripts": {},
   "dependencies": {
     "@vscode-logging/library-example": "^0.1.2",
-    "@vscode-logging/logger": "^1.1.0"
+    "@vscode-logging/logger": "^1.2.0"
   },
   "devDependencies": {
     "@types/node": "10.x",
