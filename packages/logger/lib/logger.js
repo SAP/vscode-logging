@@ -9,6 +9,7 @@ const LABEL = Symbol("label");
 const LOGGER_IMPEL = Symbol("loggerImpel");
 const LEVEL_INT = Symbol("levelInt");
 const SOURCE_LOCATION_TRACKING = Symbol("sourceLocationTracking");
+const CONSOLE_OUTPUT = Symbol("consoleOutput");
 const CHILD_LOGGERS = Symbol("childLoggers");
 const OUT_CHANNEL = Symbol("outChannel");
 const WARN_IF_LOCATION_TRACKING_IS_ENABLED = Symbol(
@@ -21,6 +22,7 @@ class BaseLogger {
    * @param {string} opts.label
    * @param {string} opts.level
    * @param {boolean} [opts.sourceLocationTracking]
+   * @param {boolean} [opts.consoleOutput]
    * @param {import("winston").Logger} opts.loggerImpel
    */
   constructor(opts) {
@@ -29,7 +31,7 @@ class BaseLogger {
     this[LEVEL_INT] = levelsConfig[opts.level];
     // disabled by default as this may cause performance regressions
     this[SOURCE_LOCATION_TRACKING] = opts.sourceLocationTracking || false;
-
+    this[CONSOLE_OUTPUT] = opts.consoleOutput || false;
     // Possible memory leak if users forget to release their childLogger Resources
     // Could have been resolved using WeakMap, however Weak Collections in JavaScript are not iterable (yet)
     // So they are insufficient for our needs (see `getChildLogger` method).
@@ -47,6 +49,7 @@ class BaseLogger {
     const newChildLoggerImpel = new BaseLogger({
       label: newLabel,
       sourceLocationTracking: this[SOURCE_LOCATION_TRACKING],
+      consoleOutput: this[CONSOLE_OUTPUT],
       level: findKey(levelsConfig, val => val === this[LEVEL_INT]),
       loggerImpel: this[LOGGER_IMPEL]
     });
@@ -153,6 +156,7 @@ class VSCodeExtLogger extends BaseLogger {
    * @param {import("winston").Logger} opts.loggerImpel
    * @param {import("vscode").OutputChannel} [opts.outChannel]
    * @param {boolean} [opts.sourceLocationTracking]
+   * @param {boolean} [opts.consoleOutput]
    */
   constructor(opts) {
     super(opts);

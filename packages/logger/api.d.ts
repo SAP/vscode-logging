@@ -20,7 +20,6 @@ export type getExtensionLoggerOpts = {
   /**
    * This parameter will be used for two things:
    *
-   * - Name of the VSCode OutputChannel to log to.
    *
    * - Root Label used when creating log entries.
    *   This will also be used as the prefix label for any childLogger e.g:
@@ -58,4 +57,11 @@ export type getExtensionLoggerOpts = {
    * If this is not passed no Output channel will be used.
    */
   logOutputChannel?: OutputChannel;
+  /**
+   * Optional Console output channel, if set to true the log message will be printed to the Console output stream (stdout/stderr in Linux)
+   * Error and Fatal messages are printed to the standard error console
+   * Warn, Info, Debug and Trace are printed to the standard output console
+   * Default = false
+   */
+  logConsole?: boolean;
 };

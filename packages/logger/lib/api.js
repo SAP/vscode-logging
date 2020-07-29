@@ -20,6 +20,7 @@ const {
 } = require("./transports/vscode-out-channel");
 const { RollingFileTransport } = require("./transports/rolling-file");
 const { levelsConfig, isValidLogLevel, levels } = require("./levels");
+const { ConsoleTransport } = require("./transports/console-output");
 
 /**
  * @param {import("../api").getExtensionLoggerOpts} opts
@@ -30,9 +31,13 @@ function getExtensionLogger(opts) {
     throw Error(`Attempt to use unknown logging level: <${opts.level}>!`);
   }
 
-  if (!has(opts, "logOutputChannel") && !has(opts, "logPath")) {
+  if (
+    !has(opts, "logOutputChannel") &&
+    !has(opts, "logPath") &&
+    !has(opts, "logConsole")
+  ) {
     throw Error(
-      "Logger must have at least one logging target defined, either logOutputChannel or logPath."
+      "Logger must have at least one logging target defined, it should includes one (or more) of these options: logOutputChannel, logPath and logConsole"
     );
   }
 
@@ -40,6 +45,10 @@ function getExtensionLogger(opts) {
    * @type {any[]}
    */
   const transports = [];
+
+  if (opts.logConsole) {
+    transports.push(new ConsoleTransport());
+  }
 
   if (opts.logOutputChannel) {
     transports.push(
@@ -70,15 +79,14 @@ function getExtensionLogger(opts) {
     transports: transports
   });
 
-  const extLogger = new VSCodeExtLogger({
+  return new VSCodeExtLogger({
     label: opts.extName,
     level: opts.level,
     loggerImpel: rootWinstonLogger,
     outChannel: opts.logOutputChannel,
-    sourceLocationTracking: opts.sourceLocationTracking
+    sourceLocationTracking: opts.sourceLocationTracking,
+    consoleOutput: opts.logConsole
   });
-
-  return extLogger;
 }
 
 /**
