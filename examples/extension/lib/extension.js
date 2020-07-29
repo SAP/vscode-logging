@@ -29,7 +29,8 @@ function activate(context) {
     level: logLevelSetting,
     logPath: logPath,
     logOutputChannel: logOutputChannel,
-    sourceLocationTracking: sourceLocationTrackingSettings
+    sourceLocationTracking: sourceLocationTrackingSettings,
+    logConsole: true
   });
 
   // Update our logger-wrapper with a reference to the extLogger.
@@ -43,6 +44,10 @@ function activate(context) {
 
   // Simple Dependency Injection example of using the VSCode Logger in a "consumed" npm library/package.
   callLibraryAndPassLogger();
+
+  getLogger().info(`Testing logging info level`);
+  getLogger().warn(`Testing logging warn level`);
+  getLogger().error(`Testing logging error level`);
 
   registerCommands(context);
 
