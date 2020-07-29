@@ -40,7 +40,8 @@ function activate(context) {
     level: "info", // See LogLevel type in @vscode-logging/types for possible logLevels
     logPath: context.logPath, // The logPath is only available from the `vscode.ExtensionContext`
     logOutputChannel: logOutputChannel, // OutputChannel for the logger
-    sourceLocationTracking: false
+    sourceLocationTracking: false,
+    logConsol: false // define if messages should be logged to the consol
   });
 
   extLogger.warn("Hello World");
