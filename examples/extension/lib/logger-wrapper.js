@@ -1,6 +1,6 @@
 /**
  * A Simple Wrapper to hold the state of our "singleton" (per extension) IVSCodeExtLogger
- * implementation.
+ * implementation.  
  */
 
 /**
