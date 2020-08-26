@@ -3,7 +3,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=SAP/vscode-logging)](https://dependabot.com)
 
-# VSCode-Logging
+# VSCode-Logging 
 
 VSCode-Logging is a [mono-repo][mono-repo] containing a a set of libraries to be used when implementing logging functionality
 in [VSCode Extensions][vscode-ext].
