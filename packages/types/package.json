@@ -6,6 +6,11 @@
     "vscode",
     "logger"
   ],
+  "files": [
+    ".reuse",
+    "LICENSES",
+    "api.d.ts"
+  ],
   "repository": "https://github.com/sap/vscode-logging/",
   "license": "Apache-2.0",
   "typings": "./api.d.ts",

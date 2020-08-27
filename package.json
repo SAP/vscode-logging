@@ -11,10 +11,12 @@
     "lerna:version": "yarn && lerna version && yarn run circle:release",
     "circle:release": "git tag -d RELEASE && git tag RELEASE && git push --delete origin RELEASE && git push --tags",
     "lerna:publish": "lerna publish from-git --yes",
-    "ci": "npm-run-all format:validate ci:subpackages",
+    "ci": "npm-run-all format:validate ci:subpackages  legal:*",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
     "format:validate": "prettier --check --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
-    "ci:subpackages": "lerna run ci"
+    "ci:subpackages": "lerna run ci",
+    "legal:delete": "lerna exec \"shx rm -rf .reuse LICENSES\" || true",
+    "legal:copy": "lerna exec \"shx cp -r ../../.reuse .reuse && shx cp -r ../../LICENSES LICENSES\""
   },
   "devDependencies": {
     "@types/chai": "4.2.7",
@@ -31,7 +33,8 @@
     "typescript": "3.7.5",
     "cz-conventional-changelog": "3.0.2",
     "@commitlint/cli": "8.3.5",
-    "@commitlint/config-conventional": "8.3.4"
+    "@commitlint/config-conventional": "8.3.4",
+    "shx": "0.3.2"
   },
   "husky": {
     "hooks": {

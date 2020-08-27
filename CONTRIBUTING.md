@@ -5,11 +5,11 @@ A sub-package **may** have an additional CONTRIBUTING.md file if needed.
 
 ## Legal
 
-All contributors must sign the CLA
+All contributors must sign the Developer Certificate of Origin (DCO)
 
 - https://cla-assistant.io/SAP/vscode-logging
 
-This is managed automatically via https://cla-assistant.io/ pull request voter.
+SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
 
 ## Pull Request Guidelines
 
@@ -32,7 +32,7 @@ In general:
 - Keep your PRs focused on a single topic.
 - It is fine if there are multiple commits in a PR, but they must all be related to a single issue
   and then be squashed into a single commit when merged to master.
-- Remember to Sign the [CLA](#legal) in the PR
+- Remember to Sign the [DCO](#legal) in the PR
   - You will be automatically asked this the first time you contribute to this project via a PR comment.
 
 ## Development Environment
