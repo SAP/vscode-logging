@@ -23,7 +23,7 @@
     "@types/mocha": "8.0.1",
     "chai": "4.2.0",
     "chai-exclude": "2.0.2",
-    "husky": "4.2.1",
+    "husky": "4.2.5",
     "lerna": "3.20.2",
     "lint-staged": "10.0.3",
     "mocha": "7.0.1",
