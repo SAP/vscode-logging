@@ -13,39 +13,39 @@ rimraf.sync(".nyc_output");
 makeDir.sync(".nyc_output");
 
 // Merge coverage data from each package so we can generate a complete reports
-glob.sync("packages/*/.nyc_output").forEach((nycOutput) => {
-    const cwd = dirname(nycOutput);
-    const { status, stderr } = spawnSync(
-        resolve("node_modules", ".bin", "nyc"),
-        [
-            "merge",
-            ".nyc_output",
-            join(__dirname, "..", ".nyc_output", basename(cwd) + ".json"),
-        ],
-        {
-            encoding: "utf8",
-            shell: true,
-            cwd,
-        }
-    );
-
-    if (status !== 0) {
-        console.error(stderr);
-        process.exit(status);
+glob.sync("packages/*/.nyc_output").forEach(nycOutput => {
+  const cwd = dirname(nycOutput);
+  const { status, stderr } = spawnSync(
+    resolve("node_modules", ".bin", "nyc"),
+    [
+      "merge",
+      ".nyc_output",
+      join(__dirname, "..", ".nyc_output", basename(cwd) + ".json")
+    ],
+    {
+      encoding: "utf8",
+      shell: true,
+      cwd
     }
+  );
+
+  if (status !== 0) {
+    console.error(stderr);
+    process.exit(status);
+  }
 });
 
 const { status, stderr } = spawnSync(
-    resolve("node_modules", ".bin", "nyc"),
-    ["report", "--reporter=lcov"],
-    {
-        encoding: "utf8",
-        shell: true,
-        cwd: resolve(__dirname, ".."),
-    }
+  resolve("node_modules", ".bin", "nyc"),
+  ["report", "--reporter=lcov"],
+  {
+    encoding: "utf8",
+    shell: true,
+    cwd: resolve(__dirname, "..")
+  }
 );
 
 if (status !== 0) {
-    console.error(stderr);
-    process.exit(status);
+  console.error(stderr);
+  process.exit(status);
 }
