@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn run ci
-       - run:
+      - run:
          command: cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
          environment:
            COVERALLS_SERVICE_NAME: circle-ci
