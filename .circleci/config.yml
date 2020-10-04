@@ -13,6 +13,8 @@ jobs:
          environment:
            COVERALLS_SERVICE_NAME: circle-ci
            COVERALLS_GIT_BRANCH: ${CIRCLE_BRANCH}
+           COVERALLS_REPO_TOKEN: NPM_TOKEN
+
 
   build-node12:
     docker:
