@@ -1,18 +1,11 @@
 const { format } = require("winston");
 const { MESSAGE } = require("triple-beam");
-const moment = require("moment-timezone");
 // @ts-ignore
 const { stableStringify } = require("fast-safe-stringify");
 
 const utcTimestampProp = format(info => {
-  // https://tools.ietf.org/html/rfc3339
-  // With 3 fractional seconds and using space instead of "T" to separate the date and time.
-  // -  The space separator is allowed by the specification.
-  // -  https://tools.ietf.org/html/rfc3339#section-5.6 (bottom)
-  const format = "YYYY-MM-DD HH:mm:ss.SSS[Z]";
-  info.time = moment()
-    .tz("Etc/UTC")
-    .format(format);
+  // The timestamp format is according to ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
+  info.time = new Date().toISOString();
 
   return info;
 });
