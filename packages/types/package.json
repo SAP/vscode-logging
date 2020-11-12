@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/types",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Common Type Signatures for @vscode-logging/logger",
   "keywords": [
     "vscode",
