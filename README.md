@@ -4,6 +4,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=SAP/vscode-logging)](https://dependabot.com)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/vscode-logging)](https://api.reuse.software/info/github.com/SAP/vscode-logging)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/SAP/vscode-logging.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SAP/vscode-logging/context:javascript)
 
 # VSCode-Logging
 
