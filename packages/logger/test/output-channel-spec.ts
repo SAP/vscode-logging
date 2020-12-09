@@ -1,5 +1,5 @@
 import { window, OutputChannel } from "vscode";
-import { BasicOutputChannel } from "../api"
+import { BasicOutputChannel } from "../api";
 
 // We check that vscodeOutputChannel is assignable to BasicOutputChannel.
 // Checked in `type-check` npm script
