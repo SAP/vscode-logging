@@ -154,7 +154,7 @@ class VSCodeExtLogger extends BaseLogger {
    * @param {string} opts.label
    * @param {string} opts.level
    * @param {import("winston").Logger} opts.loggerImpel
-   * @param {import("vscode").OutputChannel} [opts.outChannel]
+   * @param {import("../api").BasicOutputChannel} [opts.outChannel]
    * @param {boolean} [opts.sourceLocationTracking]
    * @param {boolean} [opts.consoleOutput]
    */

@@ -4,13 +4,22 @@
  * - VSCode OutputChannel
  */
 import { IVSCodeExtLogger, LogLevel } from "@vscode-logging/types";
-import { OutputChannel } from "vscode";
-
 export {
   IVSCodeExtLogger,
   IChildLogger,
   LogLevel
 } from "@vscode-logging/types";
+
+/**
+ * This is a sub-type of VSCode.OutputChannel.
+ * We define it to avoid direct dependency to @vscode/types.
+ * In some edge cases having multiple versions of @vscode/types can cause compilation errors.
+ */
+export type BasicOutputChannel = {
+  appendLine(value: string): void;
+  show(): void;
+  dispose(): void;
+};
 
 export function getExtensionLogger(
   opts: getExtensionLoggerOpts
@@ -56,7 +65,7 @@ export type getExtensionLoggerOpts = {
    * Optional Output channel where the logs should be shown.
    * If this is not passed no Output channel will be used.
    */
-  logOutputChannel?: OutputChannel;
+  logOutputChannel?: BasicOutputChannel;
   /**
    * Optional Console output channel, if set to true the log message will be printed to the Console output stream (stdout/stderr in Linux)
    * Error and Fatal messages are printed to the standard error console

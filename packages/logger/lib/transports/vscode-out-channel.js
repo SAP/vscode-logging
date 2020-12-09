@@ -4,7 +4,7 @@ const { MESSAGE } = require("triple-beam");
 class VscodeOutChannelTransport extends Transport {
   /**
    * @param {object} opts
-   * @param {import("vscode").OutputChannel} opts.outChannel
+   * @param {import("../../api").BasicOutputChannel} opts.outChannel
    */
   constructor(opts) {
     super();
