@@ -5,5 +5,5 @@
     "checkJs": true,
     "allowJs": true
   },
-  "include": ["./lib/**/*.js", "./api.d.ts"]
+  "include": ["./lib/**/*.js", "./api.d.ts", "./test/output-channel-spec.ts"]
 }

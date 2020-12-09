@@ -10,6 +10,11 @@ export {
   LogLevel
 } from "@vscode-logging/types";
 
+/**
+ * This is a sub-type of VSCode.OutputChannel.
+ * We define it to avoid direct dependency to @vscode/types.
+ * In some edge cases having multiple versions of @vscode/types can cause compilation errors.
+ */
 export type BasicOutputChannel = {
   appendLine(value: string): void;
   show(): void;
