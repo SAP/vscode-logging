@@ -1,0 +1,63 @@
+{
+  "name": "vscode-logging-extension-wrapper-example",
+  "private": true,
+  "displayName": "logging-wrapper-example",
+  "description": "Example using @vscode-logging/logger and @vscode-logging/wrapper in a VSCode Extension",
+  "version": "0.1.0",
+  "publisher": "SAP",
+  "engines": {
+    "vscode": "^1.52.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.helloWorld"
+  ],
+  "main": "./dist/src/extension.js",
+  "scripts": {
+    "ci": "npm-run-all clean compile",
+    "clean": "rimraf dist",
+    "compile": "tsc"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.helloWorld",
+        "title": "Hello World"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Example_Logging",
+      "properties": {
+        "Example_Logging.loggingLevel": {
+          "type": "string",
+          "enum": [
+            "off",
+            "fatal",
+            "error",
+            "warn",
+            "info",
+            "debug",
+            "trace"
+          ],
+          "default": "info",
+          "description": "The verbosity of logging. The Order is None < fatal < error < warn < info < debug < trace.",
+          "scope": "window"
+        },
+        "Example_Logging.sourceLocationTracking": {
+          "type": "boolean",
+          "default": false,
+          "description": "Should Source Code Location Info be added to log entries, DANGER - May be very slow, only use in debugging scenarios",
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@vscode-logging/wrapper": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.52.0",
+    "@vscode-logging/types": "^0.1.3"
+  },
+  "peerDependencies": {}
+}

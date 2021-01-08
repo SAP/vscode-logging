@@ -1,0 +1,48 @@
+{
+  "name": "@vscode-logging/wrapper",
+  "version": "0.1.0",
+  "description": "opinionated DI based wrapper for @vscode-logging/logger",
+  "keywords": [
+    "vscode",
+    "logger"
+  ],
+  "files": [
+    ".reuse",
+    "LICENSES",
+    "dist/src",
+    "api.d.ts"
+  ],
+  "main": "dist/src/api.js",
+  "repository": "https://github.com/sap/vscode-logging/",
+  "license": "Apache-2.0",
+  "typings": "./api.d.ts",
+  "dependencies": {
+    "@vscode-logging/types": "^0.1.3",
+    "@vscode-logging/logger": "^1.2.1",
+    "@types/vscode": "1.52.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.167",
+    "lodash": "^4.17.20"
+  },
+  "scripts": {
+    "ci": "npm-run-all clean compile coverage:*",
+    "clean": "rimraf ./dist ./coverage",
+    "compile": "tsc",
+    "test": "mocha \"./dist/test/**/*spec.js\"",
+    "coverage:run": "nyc mocha \"./dist/test/**/*spec.js\"",
+    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "nyc": {
+    "include": [
+      "dist/src/**/*.js"
+    ],
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
+}
