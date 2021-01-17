@@ -39,7 +39,7 @@
             "debug",
             "trace"
           ],
-          "default": "info",
+          "default": "error",
           "description": "The verbosity of logging. The Order is None < fatal < error < warn < info < debug < trace.",
           "scope": "window"
         },
