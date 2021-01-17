@@ -50,52 +50,110 @@ describe("The `listenToLogSettingsChanges` utility function", () => {
 
     loggingLevelProp = "my_vscode_ext.loggingLevel";
     sourceLocationProp = "my_vscode_ext.sourceLocationTracking";
-    const settingsMap = new Map<string, string | boolean>([
-      [loggingLevelProp, "info"],
-      [sourceLocationProp, true]
-    ]);
-    // don't worry be happy (or unknown)...
-    getConfiguration = _ => (settingsMap as unknown) as WorkspaceConfiguration;
     subscriptions = [];
+  });
 
-    onDidChangeConfiguration = function(
-      cb: (e: ConfigurationChangeEvent) => void
-    ): Disposable {
-      const e: ConfigurationChangeEvent = {
-        affectsConfiguration(): boolean {
-          return true;
-        }
+  context("affects Configuration", () => {
+    before(() => {
+      const settingsMap = new Map<string, string | boolean>([
+        [loggingLevelProp, "info"],
+        [sourceLocationProp, true]
+      ]);
+      // don't worry be happy (or unknown)...
+      getConfiguration = _ =>
+        (settingsMap as unknown) as WorkspaceConfiguration;
+
+      onDidChangeConfiguration = function(
+        cb: (e: ConfigurationChangeEvent) => void
+      ): Disposable {
+        const e: ConfigurationChangeEvent = {
+          affectsConfiguration(): boolean {
+            return true;
+          }
+        };
+        cb(e);
+        return { dispose(): any {} };
       };
-      cb(e);
-      return { dispose(): any {} };
-    };
+    });
+
+    it("will listen to `logLevel` changes", () => {
+      expect(currentLogLevel).to.equal("error");
+      listenToLogSettingsChanges({
+        sourceLocationProp,
+        loggingLevelProp,
+        getConfiguration,
+        logger,
+        logPath,
+        onDidChangeConfiguration,
+        subscriptions
+      });
+      expect(currentLogLevel).to.equal("info");
+    });
+
+    it("will listen to `sourceLocationTracking` changes", () => {
+      expect(currentSourceLocationTracking).to.be.false;
+      listenToLogSettingsChanges({
+        sourceLocationProp,
+        loggingLevelProp,
+        getConfiguration,
+        logger,
+        logPath,
+        onDidChangeConfiguration,
+        subscriptions
+      });
+      expect(currentSourceLocationTracking).to.be.true;
+    });
   });
 
-  it("will listen to `logLevel` changes", () => {
-    expect(currentLogLevel).to.equal("error");
-    listenToLogSettingsChanges({
-      sourceLocationProp,
-      loggingLevelProp,
-      getConfiguration,
-      logger,
-      logPath,
-      onDidChangeConfiguration,
-      subscriptions
-    });
-    expect(currentLogLevel).to.equal("info");
-  });
+  context("does **not** affects Configuration", () => {
+    before(() => {
+      const settingsMap = new Map<string, string | number>([
+        ["someOtherProp", "blue"],
+        ["someOtherProp2", 666]
+      ]);
+      // don't worry be happy (or unknown)...
+      getConfiguration = _ =>
+        (settingsMap as unknown) as WorkspaceConfiguration;
 
-  it("will listen to `sourceLocationTracking` changes", () => {
-    expect(currentSourceLocationTracking).to.be.false;
-    listenToLogSettingsChanges({
-      sourceLocationProp,
-      loggingLevelProp,
-      getConfiguration,
-      logger,
-      logPath,
-      onDidChangeConfiguration,
-      subscriptions
+      onDidChangeConfiguration = function(
+        cb: (e: ConfigurationChangeEvent) => void
+      ): Disposable {
+        const e: ConfigurationChangeEvent = {
+          affectsConfiguration(): boolean {
+            return false;
+          }
+        };
+        cb(e);
+        return { dispose(): any {} };
+      };
     });
-    expect(currentSourceLocationTracking).to.be.true;
+
+    it("will **not** listen to unrelated configuration changes - logLevel", () => {
+      expect(currentLogLevel).to.equal("error");
+      listenToLogSettingsChanges({
+        sourceLocationProp,
+        loggingLevelProp,
+        getConfiguration,
+        logger,
+        logPath,
+        onDidChangeConfiguration,
+        subscriptions
+      });
+      expect(currentLogLevel).to.equal("error");
+    });
+
+    it("will **not** listen to unrelated configuration changes - sourceLocationTracking", () => {
+      expect(currentSourceLocationTracking).to.be.false;
+      listenToLogSettingsChanges({
+        sourceLocationProp,
+        loggingLevelProp,
+        getConfiguration,
+        logger,
+        logPath,
+        onDidChangeConfiguration,
+        subscriptions
+      });
+      expect(currentSourceLocationTracking).to.be.false;
+    });
   });
 });
