@@ -28,6 +28,8 @@ It currently contains the following packages:
 
 
 
+
+
 Please open [issues](https://github.com/SAP/vscode-logging/issues) on github.
 
 ## Contributing
