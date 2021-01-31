@@ -82,3 +82,7 @@ package-lock.json
 test/.log-out
 test/.log-out/*
 
+# compiled sources
+dist
+tsconfig.tsbuildinfo
+
