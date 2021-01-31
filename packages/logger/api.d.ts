@@ -22,10 +22,10 @@ export type BasicOutputChannel = {
 };
 
 export function getExtensionLogger(
-  opts: GetExtensionLoggerOpts
+  opts: getExtensionLoggerOpts
 ): IVSCodeExtLogger;
 
-export type GetExtensionLoggerOpts = {
+export type getExtensionLoggerOpts = {
   /**
    * This parameter will be used for two things:
    *
