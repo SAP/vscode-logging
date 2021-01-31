@@ -23,7 +23,7 @@ const { levelsConfig, isValidLogLevel, levels } = require("./levels");
 const { ConsoleTransport } = require("./transports/console-output");
 
 /**
- * @param {import("@vscode-logging/logger").getExtensionLoggerOpts} opts
+ * @param {import("../api").getExtensionLoggerOpts} opts
  * @return {import("@vscode-logging/types").IVSCodeExtLogger}
  */
 function getExtensionLogger(opts) {
