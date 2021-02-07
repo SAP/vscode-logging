@@ -7,4 +7,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-- logger wrapper package ([#163](https://github.com/sap/vscode-logging/issues/163)) ([fc6abc5](https://github.com/sap/vscode-logging/commit/fc6abc5ea43403c3039edb8589c68a0a339e5ebc))
+- logger wrapper package ([#163](https://github.com/SAP/vscode-logging/issues/163)) ([fc6abc5](https://github.com/SAP/vscode-logging/commit/fc6abc5ea43403c3039edb8589c68a0a339e5ebc))
