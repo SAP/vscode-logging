@@ -2,17 +2,17 @@ import { expect } from "chai";
 import { ExtensionContext, WorkspaceConfiguration } from "vscode";
 import { IChildLogger, LogLevel } from "@vscode-logging/types";
 import { BasicOutputChannel } from "@vscode-logging/logger";
-import { configureLogger } from "../src/api";
-import { ConfigureLoggerOpts } from "../api";
+import { configureLoggerInternal } from "../src/configure-logger";
+import { configureLoggerInternalOpts } from "../src/configure-logger";
 
 describe("The `configureLogger` main wrapper utility function", () => {
   let outputChannelMock: BasicOutputChannel;
   let subscriptions: ExtensionContext["subscriptions"];
-  let onDidChangeConfiguration: ConfigureLoggerOpts["onDidChangeConfiguration"];
+  let onDidChangeConfiguration: configureLoggerInternalOpts["onDidChangeConfiguration"];
   let loggingLevelProp: string;
   let sourceLocationProp: string;
   let configLogLevel: LogLevel;
-  let getConfiguration: ConfigureLoggerOpts["getConfiguration"];
+  let getConfiguration: configureLoggerInternalOpts["getConfiguration"];
   let loggedLines: Record<string, unknown>[];
 
   beforeEach(() => {
@@ -47,7 +47,7 @@ describe("The `configureLogger` main wrapper utility function", () => {
   });
 
   function configureLoggerHelper(): IChildLogger {
-    return configureLogger({
+    return configureLoggerInternal({
       extName: "my_vscode_ext",
       // only logging "in memory" during our test.
       logPath: (undefined as unknown) as string,
