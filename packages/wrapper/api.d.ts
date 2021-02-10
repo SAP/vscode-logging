@@ -1,4 +1,3 @@
-import { workspace, ExtensionContext } from "vscode";
 import { IVSCodeExtLogger } from "@vscode-logging/types";
 import { BasicOutputChannel } from "@vscode-logging/logger";
 
@@ -11,39 +10,29 @@ export declare const NOOP_LOGGER: IVSCodeExtLogger;
 
 export interface ConfigureLoggerOpts {
   /**
-   * @see {GetExtensionLoggerOpts.extName}
+   * @see {GetExtensionLoggerOpts.extName} in "@vscode-logging/logger"
    */
   extName: string;
   /**
-   * @see {GetExtensionLoggerOpts.logPath}
+   * @see {GetExtensionLoggerOpts.logPath} in "@vscode-logging/logger"
    */
   logPath: string;
   loggingLevelProp: string;
   sourceLocationProp: string;
   /**
-   * @see {GetExtensionLoggerOpts.logOutputChannel}
+   * @see {GetExtensionLoggerOpts.logOutputChannel} in "@vscode-logging/logger"
    */
   logOutputChannel?: BasicOutputChannel;
   /**
-   * @see {GetExtensionLoggerOpts.logConsole}
+   * @see {GetExtensionLoggerOpts.logConsole} in "@vscode-logging/logger"
    */
   logConsole?: boolean;
   /**
-   * The vscode's extension subscriptions
+   * The vscode extension's subscriptions
    * This is normally available via the `activate` function's `context`
    * parameter.
    */
-  subscriptions: ExtensionContext["subscriptions"];
-  /**
-   * The `vscode.workspace.getConfiguration` method.
-   * Note this is the method itself, not the returned value from executing it.
-   */
-  getConfiguration: typeof workspace.getConfiguration;
-  /**
-   * The `vscode.workspace.onDidChangeConfiguration` method.
-   * Note this is the method itself, not the returned value from executing it.
-   */
-  onDidChangeConfiguration: typeof workspace.onDidChangeConfiguration;
+  subscriptions: { dispose(): any }[];
 }
 
 /**

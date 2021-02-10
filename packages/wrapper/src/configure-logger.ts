@@ -1,3 +1,4 @@
+import { workspace } from "vscode";
 import { getExtensionLogger } from "@vscode-logging/logger";
 import { IVSCodeExtLogger } from "@vscode-logging/types";
 import { ConfigureLoggerOpts } from "../api";
@@ -10,7 +11,25 @@ import {
   logLoggerDetails
 } from "./settings-changes-handler";
 
-export function configureLogger(opts: ConfigureLoggerOpts): IVSCodeExtLogger {
+export type ConfigureLoggerDIOpts = {
+  /**
+   * The `vscode.workspace.getConfiguration` method.
+   * Note this is the method itself, not the returned value from executing it.
+   */
+  getConfiguration: typeof workspace.getConfiguration;
+  /**
+   * The `vscode.workspace.onDidChangeConfiguration` method.
+   * Note this is the method itself, not the returned value from executing it.
+   */
+  onDidChangeConfiguration: typeof workspace.onDidChangeConfiguration;
+};
+
+export type configureLoggerInternalOpts = ConfigureLoggerOpts &
+  ConfigureLoggerDIOpts;
+
+export function configureLoggerInternal(
+  opts: configureLoggerInternalOpts
+): IVSCodeExtLogger {
   const logLevelSetting = getLoggingLevelSetting({
     getConfiguration: opts.getConfiguration,
     loggingLevelProp: opts.loggingLevelProp

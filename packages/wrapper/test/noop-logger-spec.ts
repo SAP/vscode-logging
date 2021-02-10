@@ -25,6 +25,10 @@ describe("The no-operation logger", () => {
     );
   });
 
+  it("will not throw when executing the NOOP function", () => {
+    expect(noop()).to.not.throw;
+  });
+
   it("implements <getChildLogger> by returning 'itself'", () => {
     expect(NOOP_LOGGER.getChildLogger({ label: "foo" })).to.equal(NOOP_LOGGER);
   });

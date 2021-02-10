@@ -1,14 +1,13 @@
 import { expect } from "chai";
 import {
   ConfigurationChangeEvent,
-  ConfigurationScope,
   Disposable,
   ExtensionContext,
   WorkspaceConfiguration
 } from "vscode";
 import { LogLevel } from "@vscode-logging/logger";
 import { IChildLogger, IVSCodeExtLogger } from "@vscode-logging/types";
-import { ConfigureLoggerOpts } from "../api";
+import { configureLoggerInternalOpts } from "../src/configure-logger";
 import { listenToLogSettingsChanges } from "../src/settings-changes-handler";
 
 describe("The `listenToLogSettingsChanges` utility function", () => {
@@ -16,8 +15,8 @@ describe("The `listenToLogSettingsChanges` utility function", () => {
   let loggingLevelProp: string;
   let sourceLocationProp: string;
   let logPath: string;
-  let getConfiguration: ConfigureLoggerOpts["getConfiguration"];
-  let onDidChangeConfiguration: ConfigureLoggerOpts["onDidChangeConfiguration"];
+  let getConfiguration: configureLoggerInternalOpts["getConfiguration"];
+  let onDidChangeConfiguration: configureLoggerInternalOpts["onDidChangeConfiguration"];
   let subscriptions: ExtensionContext["subscriptions"];
   let currentLogLevel: LogLevel;
   let currentSourceLocationTracking: boolean;
