@@ -40,7 +40,7 @@
             "trace"
           ],
           "default": "error",
-          "description": "The verbosity of logging. The Order is None < fatal < error < warn < info < debug < trace.",
+          "description": "The verbosity of logging. The Order is off < fatal < error < warn < info < debug < trace.",
           "scope": "window"
         },
         "Example_Logging.sourceLocationTracking": {
