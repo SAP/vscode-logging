@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-example@1.1.2...vscode-logging-extension-example@1.1.3) (2021-04-13)
+
+### Bug Fixes
+
+- typo in the logging.level configuration description ([#181](https://github.com/SAP/vscode-logging/issues/181)) ([c05b17d](https://github.com/SAP/vscode-logging/commit/c05b17d4348e89f27a3cb86f2e20bc190cdf1afb))
+
 ## [1.1.2](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-example@1.1.1...vscode-logging-extension-example@1.1.2) (2020-12-10)
 
 **Note:** Version bump only for package vscode-logging-extension-example
