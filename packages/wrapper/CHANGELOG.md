@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/sap/vscode-logging/compare/@vscode-logging/wrapper@1.0.1...@vscode-logging/wrapper@1.0.2) (2021-09-12)
+
+### Bug Fixes
+
+- upgrade lodash version due to CVE-2021-23337 ([c514c16](https://github.com/sap/vscode-logging/commit/c514c169ae5941cea9ebd5ae0dcb4eef8fc431d8))
+
 ## [1.0.1](https://github.com/sap/vscode-logging/compare/@vscode-logging/wrapper@1.0.0...@vscode-logging/wrapper@1.0.1) (2021-04-13)
 
 **Note:** Version bump only for package @vscode-logging/wrapper
