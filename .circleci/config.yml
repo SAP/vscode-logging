@@ -60,7 +60,8 @@ jobs:
       # the build with the newly commited version numbers
       # resetting the working tree avoids lerna errors due to unclean working trees
       - run: git reset --hard
-      - run: yarn run lerna:publish
+      # https://github.com/lerna/lerna/issues/2788
+      - run: yarn run lerna:publish --no-verify-access
 
 workflows:
   version: 2
