@@ -1,0 +1,45 @@
+name: Release
+on:
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # using `v1` because of: https://github.com/actions/checkout/issues/246
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - uses: pnpm/action-setup@v2.4
+        with:
+          version: 8.14.0
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build
+        run: pnpm run ci
+
+      - name: npm auth setup
+        # we are using `lerna` to publish which does not use `pnpm`
+        # so the auth setup is done with `npm` commands instead of `pnpm`
+        # note we are using `>` instead of `>>` and replace the whole `.npmrc` contents
+        run: |
+          npm logout || true
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+          npm whoami
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: ignore lerna error on modified .npmrc
+        run: git update-index --assume-unchanged .npmrc
+
+      - name: Publish to NPM
+        run: pnpm run release:publish
+
+      - name: Create Github Release
+        uses: softprops/action-gh-release@v1
+
