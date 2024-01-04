@@ -1,5 +1,6 @@
 # Contribution Guide
 
+
 This is the common top level contribution guide for this mono-repo.
 A sub-package **may** have an additional CONTRIBUTING.md file if needed.
 
@@ -58,10 +59,6 @@ The initial setup is trivial:
 This project enforces [Angular style](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit) commit message conventions
 using a pre-commit hook.
 
-It is recommended to use `git cz` command to construct the commit messages.
-
-- requires [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) to be installed.
-
 ### Formatting.
 
 [Prettier](https://prettier.io/) is used to ensure consistent code formatting in this repository.
@@ -98,10 +95,10 @@ does not generate any artifacts for runtime.
 
 ### Release Life-Cycle.
 
-This monorepo uses Lerna's [independent][lerna-mode] mode support a separate life-cycle (version number)
-for each package and automatically generate the changelog by adhering to [Conventional Commits][cc]
+This monorepo uses Lerna's [fixed / locked][lerna-mode] mode 
+and automatically generates the changelog by adhering to [Conventional Commits][cc]
 
-[lerna-mode]: https://github.com/lerna/lerna#independent-mode
+[lerna-mode]: https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default
 [cc]: https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Release Process
@@ -109,10 +106,9 @@ for each package and automatically generate the changelog by adhering to [Conven
 Performing a release requires push permissions to this repository.
 
 - Ensure you are on `master` branch and synced with origin.
-- `yarn run lerna:version`
+- `pnpm run release:version`
 - Follow the lerna CLI instructions.
-- Track the `RELEASE` tag build on circle-ci.
-  - https://circleci.com/gh/SAP/vscode-logging.
-- Once the tag build has finished successfully inspect the npm registry to see the new versions
-  for all the changed packages of this mono-repo.
+- Track the `release` build on github actions
+- Once the `release` build has finished successfully inspect the npm registry to see the new versions
+  for all the **changed** packages of this mono-repo.
   - `npm view [package-name] version`
