@@ -1,6 +1,5 @@
 # Contribution Guide
 
-
 This is the common top level contribution guide for this mono-repo.
 A sub-package **may** have an additional CONTRIBUTING.md file if needed.
 
@@ -92,7 +91,7 @@ does not generate any artifacts for runtime.
 
 ### Release Life-Cycle.
 
-This monorepo uses Lerna's [fixed / locked][lerna-mode] mode 
+This monorepo uses Lerna's [fixed / locked][lerna-mode] mode
 and automatically generates the changelog by adhering to [Conventional Commits][cc]
 
 [lerna-mode]: https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default
