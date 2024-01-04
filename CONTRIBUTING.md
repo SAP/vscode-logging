@@ -40,19 +40,16 @@ In general:
 
 ### pre-requisites
 
-- [Yarn](https://yarnpkg.com/lang/en/docs/install/) >= 1.4.2
-  - Yarn rather than npm is needed as this mono-repo uses [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
-- A [maintained version](https://nodejs.org/en/about/releases/) of node.js
+- [pnpm](https://pnpm.io/installation) >= 8
+- An [LTS version](https://nodejs.org/en/about/releases/) of node.js
   - This package is targeted and tested on modern/supported versions of node.js only.
-    Which means 10+ at the time of writing this document.
-- [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) for managing commit messages.
 
 ### Initial Setup
 
 The initial setup is trivial:
 
 - clone this repo
-- `yarn`
+- `pnpm i`
 
 ### Committing Changes
 
@@ -75,7 +72,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 [mocha]: https://mochajs.org/
 [istanbul]: https://istanbul.js.org/
 
-- To run the tests run `yarn test` in a specific subpackage.
+- To run the tests run `pnpm test` in a specific subpackage.
 
 ### Test Coverage
 
@@ -91,7 +88,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 This project does not use any compilation step (Babel/TypeScript), this means that the full build
 does not generate any artifacts for runtime.
 
-- To run the full **C**ontinuous **I**ntegration build run `yarn ci` in in either the top level package or a specific subpackage.
+- To run the full **C**ontinuous **I**ntegration build run `pnpm ci` in in either the top level package or a specific subpackage.
 
 ### Release Life-Cycle.
 
