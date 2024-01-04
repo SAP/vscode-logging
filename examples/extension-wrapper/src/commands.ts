@@ -7,7 +7,7 @@ export function registerCommands(
   let logMessagesCounter = 1;
   const commandSubscription = commands.registerCommand(
     "extension.helloWorld",
-    // By providing a real function name rather then a `fat arrow` ( ()=>{} )
+    // By providing a real function name rather than a `fat arrow` ( ()=>{} )
     // The `sourceLocationTracking` can provide a meaningful output.
     function registerCallback() {
       window.showInformationMessage("Hello Cruel World!");

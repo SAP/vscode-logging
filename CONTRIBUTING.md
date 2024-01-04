@@ -39,28 +39,21 @@ In general:
 
 ### pre-requisites
 
-- [Yarn](https://yarnpkg.com/lang/en/docs/install/) >= 1.4.2
-  - Yarn rather than npm is needed as this mono-repo uses [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
-- A [maintained version](https://nodejs.org/en/about/releases/) of node.js
+- [pnpm](https://pnpm.io/installation) >= 8
+- An [LTS version](https://nodejs.org/en/about/releases/) of node.js
   - This package is targeted and tested on modern/supported versions of node.js only.
-    Which means 10+ at the time of writing this document.
-- [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) for managing commit messages.
 
 ### Initial Setup
 
 The initial setup is trivial:
 
 - clone this repo
-- `yarn`
+- `pnpm i`
 
 ### Committing Changes
 
 This project enforces [Angular style](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit) commit message conventions
 using a pre-commit hook.
-
-It is recommended to use `git cz` command to construct the commit messages.
-
-- requires [commitizen](https://github.com/commitizen/cz-cli#installing-the-command-line-tool) to be installed.
 
 ### Formatting.
 
@@ -78,7 +71,7 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 [mocha]: https://mochajs.org/
 [istanbul]: https://istanbul.js.org/
 
-- To run the tests run `yarn test` in a specific subpackage.
+- To run the tests run `pnpm test` in a specific subpackage.
 
 ### Test Coverage
 
@@ -94,14 +87,14 @@ as the Parser initialization (which happens once per process) can take 10-20ms.
 This project does not use any compilation step (Babel/TypeScript), this means that the full build
 does not generate any artifacts for runtime.
 
-- To run the full **C**ontinuous **I**ntegration build run `yarn ci` in in either the top level package or a specific subpackage.
+- To run the full **C**ontinuous **I**ntegration build run `pnpm ci` in in either the top level package or a specific subpackage.
 
 ### Release Life-Cycle.
 
-This monorepo uses Lerna's [independent][lerna-mode] mode support a separate life-cycle (version number)
-for each package and automatically generate the changelog by adhering to [Conventional Commits][cc]
+This monorepo uses Lerna's [fixed / locked][lerna-mode] mode
+and automatically generates the changelog by adhering to [Conventional Commits][cc]
 
-[lerna-mode]: https://github.com/lerna/lerna#independent-mode
+[lerna-mode]: https://lerna.js.org/docs/features/version-and-publish#fixedlocked-mode-default
 [cc]: https://www.conventionalcommits.org/en/v1.0.0/
 
 ### Release Process
@@ -109,10 +102,9 @@ for each package and automatically generate the changelog by adhering to [Conven
 Performing a release requires push permissions to this repository.
 
 - Ensure you are on `master` branch and synced with origin.
-- `yarn run lerna:version`
+- `pnpm run release:version`
 - Follow the lerna CLI instructions.
-- Track the `RELEASE` tag build on circle-ci.
-  - https://circleci.com/gh/SAP/vscode-logging.
-- Once the tag build has finished successfully inspect the npm registry to see the new versions
-  for all the changed packages of this mono-repo.
+- Track the `release` build on github actions
+- Once the `release` build has finished successfully inspect the npm registry to see the new versions
+  for all the **changed** packages of this mono-repo.
   - `npm view [package-name] version`

@@ -1,10 +1,6 @@
-[![CircleCI](https://circleci.com/gh/SAP/vscode-logging.svg?style=svg)](https://circleci.com/gh/SAP/vscode-logging)
-[![Coverage Status](https://coveralls.io/repos/github/SAP/vscode-logging/badge.svg?branch=master)](https://coveralls.io/github/SAP/vscode-logging?branch=master)
+[![Continuous Integration](https://github.com/SAP/vscode-logging/actions/workflows/ci.yml/badge.svg)](https://github.com/SAP/vscode-logging/actions/workflows/ci.yml)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=SAP/vscode-logging)](https://dependabot.com)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/vscode-logging)](https://api.reuse.software/info/github.com/SAP/vscode-logging)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/SAP/vscode-logging.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/SAP/vscode-logging/context:javascript)
 
 # VSCode-Logging
 
