@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2024-01-05)
+
+### Bug Fixes
+
+- typo in the logging.level configuration description ([#181](https://github.com/SAP/vscode-logging/issues/181)) ([c05b17d](https://github.com/SAP/vscode-logging/commit/c05b17d4348e89f27a3cb86f2e20bc190cdf1afb))
+
+### Features
+
+- initial Commit ([ee780af](https://github.com/SAP/vscode-logging/commit/ee780afa90dc17cfac91a28cb2921728c1cc4489))
+- support console as log target ([#109](https://github.com/SAP/vscode-logging/issues/109)) ([ea16211](https://github.com/SAP/vscode-logging/commit/ea16211a5e2fbcdc86f4e96c8c60eaaf440d2431))
+
+* Make OutputChannel optional. (#55) ([b7fa564](https://github.com/SAP/vscode-logging/commit/b7fa56436693df9787f8ea720559beb3b0566612)), closes [#55](https://github.com/SAP/vscode-logging/issues/55) [#55](https://github.com/SAP/vscode-logging/issues/55)
+
+### BREAKING CHANGES
+
+- OutputChannel will not be created inside the logger as today. Alternatively, it
+  will be added as an optional parameter. The VS Code Extension will be able to create the
+  OutputChannel and send it to the logger as a parameter.
+
 ## [1.1.3](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-example@1.1.2...vscode-logging-extension-example@1.1.3) (2021-04-13)
 
 ### Bug Fixes

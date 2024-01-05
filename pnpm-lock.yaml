@@ -66,10 +66,10 @@ importers:
   examples/extension:
     dependencies:
       '@vscode-logging/library-example':
-        specifier: ^0.1.4
+        specifier: ^2.0.0
         version: link:../library
       '@vscode-logging/logger':
-        specifier: ^1.2.3
+        specifier: ^2.0.0
         version: link:../../packages/logger
     devDependencies:
       '@types/vscode':
@@ -79,26 +79,26 @@ importers:
   examples/extension-wrapper:
     dependencies:
       '@vscode-logging/wrapper':
-        specifier: ^1.0.2
+        specifier: ^2.0.0
         version: link:../../packages/wrapper
     devDependencies:
       '@types/vscode':
         specifier: ^1.52.0
         version: 1.52.0
       '@vscode-logging/types':
-        specifier: ^0.1.4
+        specifier: ^2.0.0
         version: link:../../packages/types
 
   examples/library:
     devDependencies:
       '@vscode-logging/types':
-        specifier: ^0.1.4
+        specifier: ^2.0.0
         version: link:../../packages/types
 
   packages/logger:
     dependencies:
       '@vscode-logging/types':
-        specifier: ^0.1.4
+        specifier: ^2.0.0
         version: link:../types
       fast-safe-stringify:
         specifier: 2.1.1
@@ -146,10 +146,10 @@ importers:
   packages/wrapper:
     dependencies:
       '@vscode-logging/logger':
-        specifier: ^1.2.3
+        specifier: ^2.0.0
         version: link:../logger
       '@vscode-logging/types':
-        specifier: ^0.1.4
+        specifier: ^2.0.0
         version: link:../types
     devDependencies:
       '@types/lodash':

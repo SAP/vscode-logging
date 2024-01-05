@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 2.0.0 (2024-01-05)
+
+### Bug Fixes
+
+- typo in the logging.level configuration description ([#181](https://github.com/SAP/vscode-logging/issues/181)) ([c05b17d](https://github.com/SAP/vscode-logging/commit/c05b17d4348e89f27a3cb86f2e20bc190cdf1afb))
+
+### Features
+
+- **wrapper:** remove dep to @types/vscode ([#167](https://github.com/SAP/vscode-logging/issues/167)) ([b362e5c](https://github.com/SAP/vscode-logging/commit/b362e5c3b11020ab09a5e705d7834fa53e8bd48e))
+- logger wrapper package ([#163](https://github.com/SAP/vscode-logging/issues/163)) ([fc6abc5](https://github.com/SAP/vscode-logging/commit/fc6abc5ea43403c3039edb8589c68a0a339e5ebc))
+
+### BREAKING CHANGES
+
+- **wrapper:** `getConfigurations` and `onDidChangeConfiguration` properties
+  were removed from the `configureLogger` public API
+
 ## [1.0.2](https://github.com/SAP/vscode-logging/compare/vscode-logging-extension-wrapper-example@1.0.1...vscode-logging-extension-wrapper-example@1.0.2) (2021-09-12)
 
 **Note:** Version bump only for package vscode-logging-extension-wrapper-example

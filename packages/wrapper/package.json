@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/wrapper",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "opinionated DI based wrapper for @vscode-logging/logger",
   "keywords": [
     "vscode",
@@ -17,8 +17,8 @@
   "license": "Apache-2.0",
   "typings": "./api.d.ts",
   "dependencies": {
-    "@vscode-logging/logger": "^1.2.3",
-    "@vscode-logging/types": "^0.1.4"
+    "@vscode-logging/logger": "^2.0.0",
+    "@vscode-logging/types": "^2.0.0"
   },
   "devDependencies": {
     "@types/lodash": "4.14.202",
