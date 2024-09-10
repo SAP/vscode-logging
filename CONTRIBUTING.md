@@ -11,6 +11,8 @@ All contributors must sign the Developer Certificate of Origin (DCO)
 
 SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
 
+## [Guideline for AI-generated code contributions to SAP Open Source Software Projects](https://github.com/SAP/.github/blob/main/CONTRIBUTING_USING_GENAI.md)
+
 ## Pull Request Guidelines
 
 When **contributing a New Feature** make sure to:
