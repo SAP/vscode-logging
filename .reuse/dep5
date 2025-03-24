@@ -1,9 +1,0 @@
-Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: vscode-logging
-Upstream-Contact: Eliran Azuri <eliran.azuri@sap.com>
-Source: https://github.com/SAP/vscode-logging
-
-Files: *
-Copyright: 2021-2024 SAP SE or an SAP affiliate company. All rights reserved.
-License: Apache-2.0
-

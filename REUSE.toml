@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "vscode-logging"
+SPDX-PackageSupplier = "Eliran Azuri <eliran.azuri@sap.com>"
+SPDX-PackageDownloadLocation = "https://github.com/SAP/vscode-logging"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2021-2024 SAP SE or an SAP affiliate company. All rights reserved."
+SPDX-License-Identifier = "Apache-2.0"
