@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/sap/vscode-logging/compare/v2.0.0...v2.0.1) (2026-02-15)
+
+### Bug Fixes
+
+- examples fix ([#242](https://github.com/sap/vscode-logging/issues/242)) ([09afea5](https://github.com/sap/vscode-logging/commit/09afea515f76238e2761c9cf5849bda589204794))
+- workspace protocol ([#243](https://github.com/sap/vscode-logging/issues/243)) ([3091351](https://github.com/sap/vscode-logging/commit/30913512554b29590b16bce4ad2a1eb3890b5dc9))
+
 # 2.0.0 (2024-01-05)
 
 ### Features
