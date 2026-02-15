@@ -1,48 +1,48 @@
 {
-  "name": "@vscode-logging/wrapper",
-  "version": "2.0.0",
-  "description": "opinionated DI based wrapper for @vscode-logging/logger",
-  "keywords": [
-    "vscode",
-    "logger"
-  ],
-  "files": [
-    ".reuse",
-    "LICENSES",
-    "dist/src",
-    "api.d.ts"
-  ],
-  "main": "dist/src/api.js",
-  "repository": "https://github.com/sap/vscode-logging/",
-  "license": "Apache-2.0",
-  "typings": "./api.d.ts",
-  "dependencies": {
-    "@vscode-logging/logger": "^2.0.0",
-    "@vscode-logging/types": "^2.0.0"
-  },
-  "devDependencies": {
-    "@types/lodash": "4.14.202",
-    "@types/vscode": "1.52.0",
-    "lodash": "4.17.21"
-  },
-  "scripts": {
-    "ci": "npm-run-all clean compile coverage:*",
-    "clean": "rimraf ./dist ./coverage",
-    "compile": "tsc",
-    "test": "mocha \"./dist/test/**/*spec.js\"",
-    "coverage:run": "nyc mocha \"./dist/test/**/*spec.js\"",
-    "coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "nyc": {
-    "include": [
-      "dist/src/**/*.js"
-    ],
-    "reporter": [
-      "text",
-      "lcov"
-    ]
-  }
+	"name": "@vscode-logging/wrapper",
+	"version": "2.0.0",
+	"description": "opinionated DI based wrapper for @vscode-logging/logger",
+	"keywords": [
+		"vscode",
+		"logger"
+	],
+	"files": [
+		".reuse",
+		"LICENSES",
+		"dist/src",
+		"api.d.ts"
+	],
+	"main": "dist/src/api.js",
+	"repository": "https://github.com/sap/vscode-logging/",
+	"license": "Apache-2.0",
+	"typings": "./api.d.ts",
+	"dependencies": {
+		"@vscode-logging/logger": "^2.0.0",
+		"@vscode-logging/types": "^2.0.0"
+	},
+	"devDependencies": {
+		"@types/lodash": "4.14.202",
+		"@types/vscode": "1.52.0",
+		"lodash": "4.17.23"
+	},
+	"scripts": {
+		"ci": "npm-run-all clean compile coverage:*",
+		"clean": "rimraf ./dist ./coverage",
+		"compile": "tsc",
+		"test": "mocha \"./dist/test/**/*spec.js\"",
+		"coverage:run": "nyc mocha \"./dist/test/**/*spec.js\"",
+		"coverage:check": "nyc check-coverage --lines 100 --branches 100 --statements 100 --functions 100"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"nyc": {
+		"include": [
+			"dist/src/**/*.js"
+		],
+		"reporter": [
+			"text",
+			"lcov"
+		]
+	}
 }
