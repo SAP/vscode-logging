@@ -7,6 +7,6 @@
   "repository": "https://github.com/sap/vscode-logging/",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@vscode-logging/types": "^2.0.0"
+    "@vscode-logging/types": "link:../../packages/types"
   }
 }
