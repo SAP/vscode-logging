@@ -53,10 +53,10 @@
     }
   },
   "dependencies": {
-    "@vscode-logging/wrapper": "^2.0.0"
+    "@vscode-logging/wrapper": "link:../../packages/wrapper"
   },
   "devDependencies": {
     "@types/vscode": "^1.52.0",
-    "@vscode-logging/types": "^2.0.0"
+    "@vscode-logging/types": "link:../../packages/types"
   }
 }

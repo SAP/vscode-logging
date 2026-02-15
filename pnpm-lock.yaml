@@ -69,7 +69,7 @@ importers:
         specifier: link:../library
         version: link:../library
       '@vscode-logging/logger':
-        specifier: ^2.0.0
+        specifier: link:../../packages/logger
         version: link:../../packages/logger
     devDependencies:
       '@types/vscode':
@@ -79,20 +79,20 @@ importers:
   examples/extension-wrapper:
     dependencies:
       '@vscode-logging/wrapper':
-        specifier: ^2.0.0
+        specifier: link:../../packages/wrapper
         version: link:../../packages/wrapper
     devDependencies:
       '@types/vscode':
         specifier: ^1.52.0
         version: 1.52.0
       '@vscode-logging/types':
-        specifier: ^2.0.0
+        specifier: link:../../packages/types
         version: link:../../packages/types
 
   examples/library:
     devDependencies:
       '@vscode-logging/types':
-        specifier: ^2.0.0
+        specifier: link:../../packages/types
         version: link:../../packages/types
 
   packages/logger:
@@ -816,9 +816,6 @@ packages:
 
   '@vscode-logging/types@2.0.0':
     resolution: {integrity: sha512-P42r5SPYeJKgMDYb5Ez9rjPlpnGEZ1eDFVjT0azxueaJ65iE259hpROmvSPUd80HAALn9/59L+CgcGLmwZcCmg==}
-
-  '@vscode-logging/wrapper@2.0.0':
-    resolution: {integrity: sha512-XA8T61WL3vsrfEMUog1km8USEgnD/3H2qXk7fizFzuEFqNRGpVq9AYjxSUuBMsffIdtwfAOFYZJ8HIwzy+cGjA==}
 
   '@zkochan/cmd-shim@3.1.0':
     resolution: {integrity: sha512-o8l0+x7C7sMZU3v9GuJIAU10qQLtwR1dtRQIOmlNMtyaqhmpXOzx1HWiYoWfmmf9HHZoAkXpc9TM9PQYF9d4Jg==}
@@ -5522,13 +5519,6 @@ snapshots:
       - supports-color
 
   '@vscode-logging/types@2.0.0': {}
-
-  '@vscode-logging/wrapper@2.0.0':
-    dependencies:
-      '@vscode-logging/logger': 2.0.0
-      '@vscode-logging/types': 2.0.0
-    transitivePeerDependencies:
-      - supports-color
 
   '@zkochan/cmd-shim@3.1.0':
     dependencies:
