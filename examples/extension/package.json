@@ -49,7 +49,7 @@
   },
   "scripts": {},
   "dependencies": {
-    "@vscode-logging/library-example": "workspace:*",
+    "@vscode-logging/library-example": "^2.0.0",
     "@vscode-logging/logger": "^2.0.0"
   },
   "devDependencies": {
