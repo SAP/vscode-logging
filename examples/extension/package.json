@@ -49,8 +49,8 @@
   },
   "scripts": {},
   "dependencies": {
-    "@vscode-logging/library-example": "link:../library",
-    "@vscode-logging/logger": "link:../../packages/logger"
+    "@vscode-logging/library-example": "workspace:*",
+    "@vscode-logging/logger": "workspace:^"
   },
   "devDependencies": {
     "@types/vscode": "^1.32.0"
