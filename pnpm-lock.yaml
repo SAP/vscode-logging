@@ -66,11 +66,11 @@ importers:
   examples/extension:
     dependencies:
       '@vscode-logging/library-example':
-        specifier: workspace:*
+        specifier: link:../library
         version: link:../library
       '@vscode-logging/logger':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: link:../../packages/logger
     devDependencies:
       '@types/vscode':
         specifier: ^1.32.0
@@ -80,26 +80,26 @@ importers:
     dependencies:
       '@vscode-logging/wrapper':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: link:../../packages/wrapper
     devDependencies:
       '@types/vscode':
         specifier: ^1.52.0
         version: 1.52.0
       '@vscode-logging/types':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: link:../../packages/types
 
   examples/library:
     devDependencies:
       '@vscode-logging/types':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: link:../../packages/types
 
   packages/logger:
     dependencies:
       '@vscode-logging/types':
         specifier: ^2.0.0
-        version: 2.0.0
+        version: link:../types
       fast-safe-stringify:
         specifier: 2.1.1
         version: 2.1.1
