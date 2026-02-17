@@ -3,7 +3,7 @@
   "private": true,
   "displayName": "logging-example",
   "description": "Example using @vscode-logging/logger in a VSCode Extension",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "publisher": "SAP",
   "engines": {
     "vscode": "^1.32.0"

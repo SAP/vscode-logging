@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/library-example",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "private": true,
   "description": "Example node library using @vscode-logging/logger via Dependency Injection",
   "main": "index.js",

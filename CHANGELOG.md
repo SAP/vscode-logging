@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/SAP/vscode-logging/compare/v2.0.2...v2.0.3) (2026-02-17)
+
+### Bug Fixes
+
+- pnpm.lock ([#245](https://github.com/SAP/vscode-logging/issues/245)) ([cba23f4](https://github.com/SAP/vscode-logging/commit/cba23f4c6169ac48f38ca1514b94210fc6fddf2e))
+
 ## [2.0.2](https://github.com/SAP/vscode-logging/compare/v2.0.1...v2.0.2) (2026-02-17)
 
 **Note:** Version bump only for package root
