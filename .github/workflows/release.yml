@@ -3,6 +3,9 @@ on:
   push:
     tags:
       - "v*.*.*"
+permissions:
+  id-token: write
+  contents: write
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -22,17 +25,6 @@ jobs:
 
       - name: Build
         run: pnpm run ci
-
-      - name: npm auth setup
-        # we are using `lerna` to publish which does not use `pnpm`
-        # so the auth setup is done with `npm` commands instead of `pnpm`
-        # note we are using `>` instead of `>>` and replace the whole `.npmrc` contents
-        run: |
-          npm logout || true
-          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
-          npm whoami
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM
         run: pnpm run release:publish
