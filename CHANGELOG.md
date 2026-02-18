@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/SAP/vscode-logging/compare/v2.0.3...v2.0.4) (2026-02-18)
+
+### Bug Fixes
+
+- add registry-url for npm trusted publishers ([6937c19](https://github.com/SAP/vscode-logging/commit/6937c1902bfed6b02527c608fd011fab102818ee))
+
 ## [2.0.3](https://github.com/SAP/vscode-logging/compare/v2.0.2...v2.0.3) (2026-02-17)
 
 ### Bug Fixes
