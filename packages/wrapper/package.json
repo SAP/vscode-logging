@@ -1,6 +1,6 @@
 {
   "name": "@vscode-logging/wrapper",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "opinionated DI based wrapper for @vscode-logging/logger",
   "keywords": [
     "vscode",

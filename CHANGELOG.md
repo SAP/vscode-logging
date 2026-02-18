@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/SAP/vscode-logging/compare/v2.0.5...v2.0.6) (2026-02-18)
+
+### Bug Fixes
+
+- add verbose logging to lerna publish ([7330c6e](https://github.com/SAP/vscode-logging/commit/7330c6e326446f867c22ba391e79077375190d11))
+
 ## [2.0.5](https://github.com/SAP/vscode-logging/compare/v2.0.4...v2.0.5) (2026-02-18)
 
 ### Bug Fixes
