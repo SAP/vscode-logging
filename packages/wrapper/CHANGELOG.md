@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.8](https://github.com/SAP/vscode-logging/compare/v2.0.7...v2.0.8) (2026-02-18)
+
+### Bug Fixes
+
+- correct repository URL case (SAP instead of sap) for npm provenance ([00a91ca](https://github.com/SAP/vscode-logging/commit/00a91ca002ba88ed27278f756b7aca8865eee1ee))
+
 ## [2.0.7](https://github.com/sap/vscode-logging/compare/v2.0.6...v2.0.7) (2026-02-18)
 
 **Note:** Version bump only for package @vscode-logging/wrapper

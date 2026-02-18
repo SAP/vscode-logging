@@ -3,7 +3,7 @@
   "private": true,
   "displayName": "logging-wrapper-example",
   "description": "Example using @vscode-logging/logger and @vscode-logging/wrapper in a VSCode Extension",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "publisher": "SAP",
   "engines": {
     "vscode": "^1.52.0"
