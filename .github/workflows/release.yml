@@ -29,6 +29,8 @@ jobs:
 
       - name: Publish to NPM
         run: pnpm run release:publish
+        env:
+          NPM_CONFIG_PROVENANCE: "true"
 
       - name: Create Github Release
         uses: softprops/action-gh-release@v1
