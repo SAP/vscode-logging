@@ -16,7 +16,7 @@
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
     "release:version": "lerna version",
-    "release:publish": "lerna publish from-git --yes --no-verify-access --loglevel verbose",
+    "release:publish": "lerna publish from-git --yes --no-verify-access",
     "ci": "npm-run-all format:validate ci:subpackages legal:* coverage:merge",
     "ci:subpackages": "lerna run ci",
     "format:fix": "prettier --write --ignore-path .gitignore \"**/*.@(ts|js|json|md)\"",
