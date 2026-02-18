@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.7](https://github.com/SAP/vscode-logging/compare/v2.0.6...v2.0.7) (2026-02-18)
+
+### Bug Fixes
+
+- upgrade lerna to 9.0.3 for better npm trusted publishers support ([396a9f1](https://github.com/SAP/vscode-logging/commit/396a9f1ebd27dbba01d41c6b299561d849d47a5b))
+
 ## [2.0.6](https://github.com/SAP/vscode-logging/compare/v2.0.5...v2.0.6) (2026-02-18)
 
 ### Bug Fixes
