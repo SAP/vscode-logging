@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.5](https://github.com/SAP/vscode-logging/compare/v2.0.4...v2.0.5) (2026-02-18)
+
+### Bug Fixes
+
+- add NPM_CONFIG_PROVENANCE for trusted publishers ([10d22fa](https://github.com/SAP/vscode-logging/commit/10d22faeef072af6fdb82f344d9496979b13279e))
+
 ## [2.0.4](https://github.com/SAP/vscode-logging/compare/v2.0.3...v2.0.4) (2026-02-18)
 
 ### Bug Fixes
