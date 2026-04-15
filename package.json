@@ -38,6 +38,20 @@
       "eslint --fix --max-warnings=0 --ignore-pattern=!.*"
     ]
   },
+  "pnpm": {
+    "overrides": {
+      "brace-expansion@>=2.0.0 <2.0.3": "2.0.3",
+      "axios": ">=1.15.0",
+      "handlebars": ">=4.7.9",
+      "tar@>=7.0.0": ">=7.5.11",
+      "js-yaml@>=4.0.0": ">=4.1.1",
+      "micromatch": ">=4.0.8",
+      "nanoid@>=3.0.0 <4": ">=3.3.8",
+      "yaml@>=2.0.0": ">=2.8.3",
+      "diff@>=5.0.0 <6": ">=5.2.2",
+      "tmp@>=0.2.0": ">=0.2.4"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "18.4.3",
     "@commitlint/config-conventional": "18.4.3",
