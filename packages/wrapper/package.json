@@ -23,7 +23,7 @@
   "devDependencies": {
     "@types/lodash": "4.14.202",
     "@types/vscode": "1.52.0",
-    "lodash": "4.17.23"
+    "lodash": "^4.18.0"
   },
   "scripts": {
     "ci": "npm-run-all clean compile coverage:*",
