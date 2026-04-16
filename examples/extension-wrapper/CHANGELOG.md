@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](https://github.com/SAP/vscode-logging/compare/v2.0.8...v2.0.9) (2026-04-16)
+
+**Note:** Version bump only for package vscode-logging-extension-wrapper-example
+
 ## [2.0.8](https://github.com/SAP/vscode-logging/compare/v2.0.7...v2.0.8) (2026-02-18)
 
 **Note:** Version bump only for package vscode-logging-extension-wrapper-example
