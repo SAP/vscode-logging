@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This repository has moved to [SAP/app-studio-toolkit/projects/vscode-logging](https://github.com/SAP/app-studio-toolkit/tree/main/projects/vscode-logging).**
+
 [![Continuous Integration](https://github.com/SAP/vscode-logging/actions/workflows/ci.yml/badge.svg)](https://github.com/SAP/vscode-logging/actions/workflows/ci.yml)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/vscode-logging)](https://api.reuse.software/info/github.com/SAP/vscode-logging)
