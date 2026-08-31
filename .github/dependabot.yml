@@ -1,0 +1,43 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "10:00"
+    timezone: Etc/UCT
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 11.a, < 12"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 12.a, < 13"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 13.a, < 14"
+  - dependency-name: "@types/node"
+    versions:
+    - ">= 14.a, < 15"
+  - dependency-name: "@types/chai"
+    versions:
+    - 4.2.16
+  - dependency-name: prettier
+    versions:
+    - 2.2.1
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: "@types/node"
+    versions:
+    - 10.17.51
+    - 10.17.52
+    - 10.17.53
+    - 10.17.54
+    - 10.17.55
+  - dependency-name: "@commitlint/cli"
+    versions:
+    - 11.0.0
+    - 12.0.0
+    - 12.0.1
