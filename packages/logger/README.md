@@ -41,7 +41,7 @@ function activate(context) {
     logPath: context.logPath, // The logPath is only available from the `vscode.ExtensionContext`
     logOutputChannel: logOutputChannel, // OutputChannel for the logger
     sourceLocationTracking: false,
-    logConsol: false // define if messages should be logged to the consol
+    logConsole: false // define if messages should be logged to the console
   });
 
   extLogger.warn("Hello World");
